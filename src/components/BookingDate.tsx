@@ -67,6 +67,7 @@ export default function BookingDate() {
 
   //combine both arrays (8+4) into one (12)
   const allDates = [...dateBtns, ...finalDisabledDates];
+  console.log(allDates)
   console.log(allDates.keys);
 
   return (
