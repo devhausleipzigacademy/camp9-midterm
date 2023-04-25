@@ -11,7 +11,9 @@ interface PaginationMovies {
 export default function PaginationMovies({ state }: PaginationMovies) {
   console.log(state);
   const { isError, isLoading, data } = useQuery<MovieDbResponse>(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=b83392e48747a4845ad80c2011eaa33b`
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }`
   );
 
   const allMovies = data?.results;

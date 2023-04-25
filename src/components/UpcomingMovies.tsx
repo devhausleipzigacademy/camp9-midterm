@@ -1,13 +1,23 @@
 import { Link } from 'react-router-dom';
-import useQuery from '../hook/useQuery';
 import { Movie, MovieDbResponse } from '../utilities/types';
+import useGetUpcomingMovies from '../hook/useGetUpcomingMovies';
 
 function UpcomingMovies() {
-  const { data } = useQuery<MovieDbResponse>(
-    'https://api.themoviedb.org/3/movie/upcoming?api_key=7bdc02c5d27a184488dd56b87a8cad76&language=en-US'
-  );
+  const { isLoading, isError, data } = useGetUpcomingMovies<MovieDbResponse>();
 
-  const movies = data?.results;
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error!</span>;
+  }
+
+  if (typeof data == 'string') {
+    return <span>Error!</span>;
+  }
+
+  const movies = data.results;
 
   return (
     <>

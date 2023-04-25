@@ -23,6 +23,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env
 
 # camp9 additions
 pnpm-lock.yaml
+.env
+

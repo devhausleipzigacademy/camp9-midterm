@@ -31,7 +31,9 @@ function getImages(
       };
       axios
         .get(
-          `https://api.themoviedb.org/3/person/${castMember.id}/images?api_key=b83392e48747a4845ad80c2011eaa33b`
+          `https://api.themoviedb.org/3/person/${
+            castMember.id
+          }/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
         )
         .then(result => {
           try {

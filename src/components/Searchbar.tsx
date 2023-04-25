@@ -11,7 +11,9 @@ function SearchBar() {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=7bdc02c5d27a184488dd56b87a8cad76&language=en-US&query=${query}&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${
+          import.meta.env.VITE_TMDB_KEY
+        }&language=en-US&query=${query}&include_adult=false`
       )
       .then(res => setMovie(res.data.results))
       .catch();
