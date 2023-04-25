@@ -13,7 +13,7 @@ import SearchBar from './components/Searchbar';
 import LogInPage from './pages/LogInPage';
 import Movies from './pages/Movies';
 import EmojieProvider from './Context/GenreContext';
-import SelectSeats from './pages/SelectSeats';
+import SelectSeat from './pages/SelectSeat';
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/seats',
-    element: <SelectSeats />, // insert your page here
+    element: <SelectSeat />, // insert your page here
   },
   {
     path: '/success',
