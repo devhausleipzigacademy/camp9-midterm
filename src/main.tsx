@@ -13,6 +13,7 @@ import SearchBar from './components/Searchbar';
 import LogInPage from './pages/LogInPage';
 import Movies from './pages/Movies';
 import EmojieProvider from './Context/GenreContext';
+import SelectSeats from './pages/SelectSeats';
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: '/movies',
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/genres',
-    element: <Genres/>, // insert your page here
+    element: <Genres />, // insert your page here
   },
   {
     path: '/movies/:id',
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/seats',
-    element: <h1>SELECT SEATS</h1>, // insert your page here
+    element: <SelectSeats />, // insert your page here
   },
   {
     path: '/success',
@@ -61,8 +62,8 @@ export const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-  <EmojieProvider>
-    <RouterProvider router={router} />
+    <EmojieProvider>
+      <RouterProvider router={router} />
     </EmojieProvider>
   </React.StrictMode>
 );

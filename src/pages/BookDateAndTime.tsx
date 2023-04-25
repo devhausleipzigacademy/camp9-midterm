@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BookingDate from '../components/BookingDate';
 import BookingTime from '../components/BookingTime';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/CreditsPageHeader';
 
 export default function BookDateAndTime() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
