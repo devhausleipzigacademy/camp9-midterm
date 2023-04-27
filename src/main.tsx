@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
     element: <ChangePassword />,
   },
   {
-    path: '/favoriteGenres',
+    path: '/favoritegenres',
     element: <FavoriteGenres />,
   },
 ]);

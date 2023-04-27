@@ -14,6 +14,7 @@ interface EmojieLibraryEntry {
   id: number;
   GenreId: number;
   isSelected: boolean;
+  isFavorite: boolean;
 }
 
 interface EmojieLibraryContext {

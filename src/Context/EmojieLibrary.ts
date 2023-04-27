@@ -5,6 +5,7 @@ export const emojieLibrary = [
     id: 1,
     GenreId: 28,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Adventure',
@@ -12,6 +13,7 @@ export const emojieLibrary = [
     id: 2,
     GenreId: 12,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Animation',
@@ -19,6 +21,7 @@ export const emojieLibrary = [
     id: 3,
     GenreId: 16,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Comedy',
@@ -26,6 +29,7 @@ export const emojieLibrary = [
     id: 4,
     GenreId: 35,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Crime',
@@ -33,6 +37,7 @@ export const emojieLibrary = [
     id: 5,
     GenreId: 80,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Factual Film',
@@ -40,6 +45,7 @@ export const emojieLibrary = [
     id: 6,
     GenreId: 99,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Drama',
@@ -47,6 +53,7 @@ export const emojieLibrary = [
     id: 7,
     GenreId: 18,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Family',
@@ -54,6 +61,7 @@ export const emojieLibrary = [
     id: 8,
     GenreId: 10751,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Fantasy',
@@ -61,6 +69,7 @@ export const emojieLibrary = [
     id: 9,
     GenreId: 14,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'History',
@@ -68,6 +77,7 @@ export const emojieLibrary = [
     id: 10,
     GenreId: 36,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Horror',
@@ -75,6 +85,7 @@ export const emojieLibrary = [
     id: 11,
     GenreId: 27,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Music',
@@ -82,6 +93,7 @@ export const emojieLibrary = [
     id: 12,
     GenreId: 10402,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Mystery',
@@ -89,6 +101,7 @@ export const emojieLibrary = [
     id: 13,
     GenreId: 9648,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Romance',
@@ -96,6 +109,7 @@ export const emojieLibrary = [
     id: 14,
     GenreId: 10749,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Science Fiction',
@@ -103,6 +117,7 @@ export const emojieLibrary = [
     id: 15,
     GenreId: 878,
     isSelected: false,
+    isFavorite: false,
   },
   {
     Genre: 'Thriller',
@@ -110,5 +125,6 @@ export const emojieLibrary = [
     id: 16,
     GenreId: 53,
     isSelected: false,
+    isFavorite: false,
   },
 ];
