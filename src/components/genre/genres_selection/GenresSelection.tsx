@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useEmojieLibrary } from '../../../Context/GenreContext';
+import { useEmojieLibrary } from '../../../contexts/GenreContext';
 import Button from '../../Button';
 import GenresSelectorLayout from './GenresSelectorLayout';
 

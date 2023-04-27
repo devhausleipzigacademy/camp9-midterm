@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Movie } from '../utilities/types';
-import useGetUpcomingMovies from '../hook/useGetUpcomingMovies';
+import useGetUpcomingMovies from '../hooks/useGetUpcomingMovies';
 
 function UpcomingMovies() {
   const { isLoading, isError, data } = useGetUpcomingMovies();

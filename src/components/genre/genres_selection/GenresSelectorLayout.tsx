@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
-import { useEmojieLibrary } from '../../../Context/GenreContext';
+import { useEmojieLibrary } from '../../../contexts/GenreContext';
 import GenreIconButton from './GenreIconButton';
 
 function GenresSelectorLayout() {

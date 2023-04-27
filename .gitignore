@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-pnpm-lock.yaml
 
 node_modules
 dist
@@ -23,9 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.env
 
 # camp9 additions
 pnpm-lock.yaml
 .env
+package-lock.json
 

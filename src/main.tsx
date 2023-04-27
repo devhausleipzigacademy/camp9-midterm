@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import './index.css';
-import WelcomeHeader from './components/WelcomeHeader';
 import NavigationLayout from './components/NavigationLayout';
 import MovieDetails from './pages/MovieDetails';
 import Ticket from './pages/Ticket';
@@ -14,9 +13,7 @@ import Genres from './pages/Genres';
 import Credits from './pages/Credits';
 import LogInPage from './pages/LogInPage';
 import Movies from './pages/Movies';
-import EmojieProvider from './Context/GenreContext';
-
-
+import EmojieProvider from './contexts/GenreContext';
 
 export const router = createBrowserRouter([
   {
@@ -35,11 +32,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LogInPage />, // insert your page here
+    element: <LogInPage />,
   },
   {
     path: '/genres',
-    element: <Genres />, // insert your page here
+    element: <Genres />,
   },
   {
     path: '/movies/:id',
@@ -51,7 +48,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dates/:id',
-    element: <BookDateAndTime />, // insert your page here
+    element: <BookDateAndTime />,
   },
   {
     path: '/seats/:id',

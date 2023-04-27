@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Genreonclick from './Genreonclick';
 import { Link } from 'react-router-dom';
-import { useEmojieLibrary } from '../../Context/GenreContext';
+import { useEmojieLibrary } from '../../contexts/GenreContext';
 
 function GenreFavorites() {
   const { filteredEmojieLibrary } = useEmojieLibrary();

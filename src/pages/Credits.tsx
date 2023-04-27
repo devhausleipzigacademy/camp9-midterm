@@ -7,7 +7,7 @@ import {
   TMDBCrew,
   CreditsImage,
 } from '../utilities/types';
-import useQuery from '../hook/useQuery';
+import useQuery from '../hooks/useQuery';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import CastCrewButton from '../components/CastCrewButton';

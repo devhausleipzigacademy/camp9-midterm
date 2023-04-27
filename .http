@@ -1,2 +1,0 @@
-GET https://api.themoviedb.org/3/movie/popular?api_key=b83392e48747a4845ad80c2011eaa33b&language=en-US&page=1 HTTP/1.1
-content-type: application/json

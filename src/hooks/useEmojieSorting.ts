@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useEmojieLibrary } from '../Context/GenreContext';
+import { useEmojieLibrary } from '../contexts/GenreContext';
 import { MovieDbResponse } from '../utilities/types';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';

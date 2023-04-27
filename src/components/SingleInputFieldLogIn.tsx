@@ -15,7 +15,6 @@ function SingleInputFieldLogIn({ placeholder, svg, type }: Props) {
     //to check if the input is in email-format
     const valid = /\S+@\S+\.\S+/;
     const result = valid.test(inputValue);
-    console.log(result);
     if (result === true && type === 'email') {
       setIsEmail(true);
     } else if (result === false && type === 'email') {

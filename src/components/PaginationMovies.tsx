@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEmojieMovies } from '../hook/useEmojieSorting';
+import { useEmojieMovies } from '../hooks/useEmojieSorting';
 
 interface PaginationMovies {
   state: number;
