@@ -6,7 +6,7 @@ async function getBookmarkedMovies(id: number) {
   const response = await axios.get<MovieDetailDbResponse>(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${
       import.meta.env.VITE_TMDB_KEY
-    }&language=en-US&append_to_response=credits`
+    }&language=en-US`
   );
   return response.data;
 }

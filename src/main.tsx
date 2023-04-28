@@ -36,6 +36,7 @@ export const router = createBrowserRouter([
         path: '/movies',
         element: <Movies />,
       },
+      { path: '/bookmarks', element: <BookmarkedMovies /> },
     ],
   },
   {
@@ -86,7 +87,6 @@ export const router = createBrowserRouter([
     path: '/favoriteGenres',
     element: <FavoriteGenres />,
   },
-  { path: '/bookmarked', element: <BookmarkedMovies /> },
 ]);
 
 const queryClient = new QueryClient();

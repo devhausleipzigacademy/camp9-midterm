@@ -8,7 +8,7 @@ export default function BookmarkedMovies() {
   return (
     <>
       <div className="px-5 py-8">
-        <PaginationBookmarkedMovies state={state} />
+        <PaginationBookmarkedMovies />
         <PaginationButtons state={state} setState={setState} />
       </div>
     </>
