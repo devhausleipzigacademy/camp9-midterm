@@ -10,7 +10,7 @@ function SingleInputFieldLogIn({ placeholder, svg, type }: Props) {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <div className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 mt-5">
+    <div className="w-full rounded-lg bg-dark-light dark:bg-white h-[48px] flex items-center justify-between p-5 gap-5 mt-5">
       <div className="flex gap-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ function SingleInputFieldLogIn({ placeholder, svg, type }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6 text-white-dimmed "
+          className="w-6 h-6 text-white-dimmed dark:text-dark"
         >
           <path
             strokeLinecap="round"
@@ -37,7 +37,7 @@ function SingleInputFieldLogIn({ placeholder, svg, type }: Props) {
             type={type}
             value={inputValue}
             placeholder={placeholder}
-            className="bg-dark-light typography-body"
+            className="bg-dark-light dark:bg-white-dimmed typography-body"
             onChange={e => setInputValue(e.target.value)}
           />
         </label>

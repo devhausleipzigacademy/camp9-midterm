@@ -14,8 +14,8 @@ function LogInPage() {
     <div className="px-5 py-8 h-screen relative flex justify-between flex-col">
       {isLogInOrSignUp === 'LogIn' ? (
         <div>
-          <h1 className="typography-title">Welcome to Cine-Scape</h1>
-          <p className="typography-body pt-3 pb-5">
+          <h1 className="typography-title dark:text-dark">Welcome to Cine-Scape</h1>
+          <p className="typography-body dark:text-dark-light pt-3 pb-5">
             You need to log in to be able to make reservations and add movies to
             your watchlist.
           </p>
