@@ -21,6 +21,7 @@ import SelectSeats from './pages/SelectSeats';
 import ChangePassword from './pages/ChangePassword';
 import FavoriteGenres from './pages/FavoriteGenres';
 import EditProfile from './pages/EditProfile';
+import BookmarkedMovies from './pages/BookmarkedMovies';
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +86,7 @@ export const router = createBrowserRouter([
     path: '/favoriteGenres',
     element: <FavoriteGenres />,
   },
+  { path: '/bookmarked', element: <BookmarkedMovies /> },
 ]);
 
 const queryClient = new QueryClient();
