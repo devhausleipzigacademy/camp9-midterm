@@ -1,13 +1,20 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useRef } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { MagnifyingGlassIcon, CheckIcon } from '@heroicons/react/20/solid';
 import axios from 'axios';
 import { Movie } from '../utilities/types';
 
 function SearchBar() {
+/* This code is setting up state variables `query` and `movie` using the `useState` hook. The `query`
+variable is initialized with an empty string and `movie` is initialized with an empty array of
+`Movie` type. */
   const [query, setQuery] = useState('');
   const [movie, setMovie] = useState<Movie[]>([]);
 
+/* This code is using the `useEffect` hook to make an API call to the Movie Database API when the
+`query` state variable changes. The API call is made using the `axios` library and the URL includes
+the `query` value as a parameter. The response data is then used to update the `movie` state
+variable using the `setMovie` function. */
   useEffect(() => {
     axios
       .get(
@@ -19,6 +26,13 @@ function SearchBar() {
       .catch();
   }, [query]);
 
+/* This code is creating a new variable `filteredData` that contains an array of `Movie` objects that
+match the search query entered by the user. If the search query is an empty string, the
+`filteredData` variable is set to the entire `movie` array. If the search query is not empty, the
+`filter()` method is used to create a new array that contains only the `Movie` objects whose `title`
+property matches the search query. The `toLowerCase()` and `replace()` methods are used to remove
+any whitespace and convert both the search query and the `title` property to lowercase for
+case-insensitive matching. */
   const filteredData =
     query === ''
       ? movie
@@ -29,23 +43,23 @@ function SearchBar() {
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
 
-  useEffect(() => {
-    function focusSearchBar() {
-      const sbar = document.querySelector('.sbar') as HTMLDivElement;
-      const sbarInput = document.querySelector(
-        '.sbar__input'
-      ) as HTMLInputElement;
-      sbar.addEventListener('click', () => {
-        sbarInput.focus();
-      });
-    }
-    focusSearchBar();
-  }, []);
+/* This code is creating a reference to the input element of the search bar using the `useRef` hook.
+The `inputBar` variable is initialized with a value of `null` or `any` type. The `handleClick`
+function is used to set focus on the input element when the search bar is clicked. This is achieved
+by accessing the `current` property of the `inputBar` reference and calling the `focus()` method on
+it. */
+  const inputBar: null | any = useRef(null);
+  const handleClick = () => {
+    inputBar.current.focus();
+  };
 
   return (
     <Combobox value={query} onChange={setQuery}>
       <div className="w-[20.938rem] h-[3rem]">
-        <div className="sbar bg-[#363740] w-[20.938rem] h-[3rem] rounded-full flex items-center">
+        <div
+          className="sbar bg-[#363740] w-[20.938rem] h-[3rem] rounded-full flex items-center"
+          onClick={handleClick}
+        >
           <div className="sbar__icon border-solid py-[0.938rem] pl-[1.438rem] pr-[1.188rem]">
             <MagnifyingGlassIcon
               className="icon text-[#86878c] "
@@ -58,6 +72,8 @@ function SearchBar() {
             className="sbar__input bg-transparent mr-[1.438rem] flex-1 outline-0 text-[#9ca3af]"
             onChange={event => setQuery(event.target.value)}
             placeholder="Search"
+            autoFocus
+            ref={inputBar}
           />
         </div>
         <Transition
