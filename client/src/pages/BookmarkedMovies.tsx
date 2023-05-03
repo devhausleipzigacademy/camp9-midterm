@@ -1,5 +1,5 @@
 import PaginationBookmarkedMovies from '../components/PaginationBookmarkedMovies';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PaginationButtons from '../components/PaginationButtons';
 
 export default function BookmarkedMovies() {

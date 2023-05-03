@@ -5,8 +5,12 @@ import { firstOneOrTwoGenres } from '../utilities/firstOneOrTwoGenres';
 import { returnNameOfCrewMember } from '../utilities/returnNameOfCrewMember';
 import { useGetMovieDetails } from '../hooks/useGetMovieDetails';
 import HeaderPage from '../components/HeaderPage';
+import { useContext } from 'react';
+import BookmarkedMovies from './BookmarkedMovies';
+import { useBookmarks } from '../contexts/BookmarkedMoviesContext';
 
 function MovieDetails() {
+  const { bookmarkedMovieIds, toggleBookmark } = useBookmarks();
   const { id } = useParams();
 
   const { data, isLoading, isError } = useGetMovieDetails(parseInt(id!));
@@ -19,9 +23,18 @@ function MovieDetails() {
     throw new Error('no data found');
   }
 
+  function onHeartButtonClick() {
+    data && data.id && toggleBookmark(data.id);
+  }
+
   return (
     <article className="pb-7 h-screen">
-      <HeaderPage children="Movie Detail" hasHeartButton={true} />
+      <HeaderPage
+        isLiked={bookmarkedMovieIds.includes(data.id)}
+        children="Movie Detail"
+        hasHeartButton={true}
+        onHeartButtonClick={onHeartButtonClick}
+      />
       <div className="px-5 pb-7 h-full flex flex-col">
         <img
           className="rounded-md mt-5"

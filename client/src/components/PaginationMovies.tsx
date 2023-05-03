@@ -18,7 +18,7 @@ export default function PaginationMovies({ state }: PaginationMovies) {
   let fourMovies = allMovies;
   switch (state) {
     case 1:
-      fourMovies = allMovies?.slice(0, 4);
+      fourMovies = allMovies?.slice(0, 4);  
       break;
     case 2:
       fourMovies = allMovies?.slice(4, 8);

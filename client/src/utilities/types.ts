@@ -6,6 +6,7 @@ export type Movie = {
 };
 
 export type MovieDbResponse = {
+  [x: string]: any;
   page: number;
   results: Movie[];
   total_pages: number;
@@ -19,6 +20,7 @@ export type TicketProps = {
 };
 
 export type MovieDetailDbResponse = {
+  map(arg0: (movie: any, index: any) => void): import('react').ReactNode;
   title: string;
   backdrop_path: string;
   release_date: string;
@@ -29,6 +31,7 @@ export type MovieDetailDbResponse = {
   runtime: number;
   vote_average: number;
   overview: string;
+  id: number;
   imdb_id: string;
   credits: {
     id: number;
