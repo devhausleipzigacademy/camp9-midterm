@@ -3,7 +3,7 @@ import axios from 'axios';
 import { MovieDbResponse } from '../utilities/types';
 import { EmojieLibraryEntry, useEmojieLibrary } from '../contexts/GenreContext';
 
-// this funciton just returns an array of IDs of currently selected genres from the GenreContext
+// this function just returns an array of IDs of currently selected genres from the GenreContext
 function getSelectedGenres(filteredEmojieLibrary: EmojieLibraryEntry[]) {
   const selectedGenresIDs = filteredEmojieLibrary
     .filter(genreid => {
