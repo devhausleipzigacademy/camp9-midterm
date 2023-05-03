@@ -19,9 +19,9 @@ export default function ListMovies() {
             fetchNextPage();
           }}
           hasMore={!!hasNextPage}
-          loader={<h4>Loading...</h4>}
+          loader={<h4 className="text-white">wait a sec...</h4>}
           endMessage={
-            <p style={{ textAlign: 'center' }}>
+            <p style={{ textAlign: 'center', color: 'white' }}>
               <b>Yay! You have seen it all</b>
             </p>
           }
@@ -31,15 +31,19 @@ export default function ListMovies() {
               <div className="grid grid-rows-2 grid-cols-2 gap-5">
                 {page.results.map((movie, index) => {
                   let image = movie.poster_path;
-                  return (
-                    <Link to={`/movies/${movie.id}`} key={index}>
-                      <div className="h-auto">
-                        <img
-                          src={`https://image.tmdb.org/t/p/original/${image}`}
-                        ></img>
-                      </div>
-                    </Link>
-                  );
+                  if (movie.poster_path === null) {
+                    return null;
+                  } else {
+                    return (
+                      <Link to={`/movies/${movie.id}`} key={index}>
+                        <div className="h-auto">
+                          <img
+                            src={`https://image.tmdb.org/t/p/original/${image}`}
+                          ></img>
+                        </div>
+                      </Link>
+                    );
+                  }
                 })}
               </div>
             );
