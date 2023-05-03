@@ -1,0 +1,56 @@
+{
+    "movies": [
+      {
+        "name": "Mario Bros the movie",
+        "id": "1",
+        "times": [
+          {
+            "day": "Monday",
+            "time": ["10:00", "12:00", "14:00"]
+          },
+          {
+            "day": "Wednesday",
+            "time": ["10:00", "12:00", "14:00"]
+          },
+          {
+            "day": "Friday",
+            "time": ["10:00", "12:00", "14:00"]
+          }
+        ]
+      },
+      {
+        "name": "Evil Dead Rise",
+        "times": [
+          {
+            "day": "Monday",
+            "time": ["16:00", "18:00", "20:00"]
+          },
+          {
+            "day": "Wednesday",
+            "time": ["16:00", "18:00", "20:00"]
+          },
+          {
+            "day": "Friday",
+            "time": ["16:00", "18:00", "20:00"]
+          }
+        ]
+      },
+      {
+        "name": "Cocaine Bear",
+        "times": [
+          {
+            "day": "Monday",
+            "time": ["22:00", "", ""]
+          },
+          {
+            "day": "Wednesday",
+            "time": ["22:00", "", ""]
+          },
+          {
+            "day": "Friday",
+            "time": ["22:00", "", ""]
+          }
+        ]
+      }
+    ]
+  }

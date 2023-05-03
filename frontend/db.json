@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "firstName": "Lui",
+      "lastName": "Lueckhoff",
+      "email": "quenaya@web.de",
+      "password": "",
+      "age": "adult",
+      "student": false,
+      "id": 1
+    }
+  ]
+}
