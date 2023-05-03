@@ -14,8 +14,9 @@ export default function ListMovies() {
   const twentyMovies = movies!;
 
   return (
-    <div className="grid grid-rows-2 grid-cols-2 gap-5">
+    <div>
       <InfiniteScroll
+        className="grid grid-rows-2 grid-cols-2 gap-5"
         dataLength={twentyMovies.length}
         next={() => {
           console.log('Hai new movies');
