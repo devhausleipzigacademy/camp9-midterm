@@ -8,7 +8,7 @@ import React, {
 import { emojieLibrary } from './EmojieLibrary';
 import { Emojie } from '../stories/GenreEmojies.stories';
 
-interface EmojieLibraryEntry {
+export interface EmojieLibraryEntry {
   Genre: string;
   Emoji: string;
   id: number;
