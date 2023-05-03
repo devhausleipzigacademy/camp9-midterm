@@ -3,7 +3,7 @@ import axios from 'axios';
 import { MovieDbResponse } from '../utilities/types';
 import { EmojieLibraryEntry, useEmojieLibrary } from '../contexts/GenreContext';
 
-// this funciton just returns an array of IDs of currently selected genres from the GenreContext
+// this function just returns an array of IDs of currently selected genres from the GenreContext
 function getSelectedGenres(filteredEmojieLibrary: EmojieLibraryEntry[]) {
   const selectedGenresIDs = filteredEmojieLibrary
     .filter(genreid => {
@@ -19,7 +19,6 @@ async function getInfiniteMovies(
   pageNumber: number,
   selectedGenresParameter: string
 ) {
-  console.log(selectedGenresParameter);
   const response = await axios.get<MovieDbResponse>(
     `https://api.themoviedb.org/3/discover/movie?api_key=${
       import.meta.env.VITE_TMDB_KEY
