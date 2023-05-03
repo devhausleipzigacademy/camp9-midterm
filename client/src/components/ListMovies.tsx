@@ -7,9 +7,13 @@ export default function ListMovies() {
     useGetInfiniteMovies();
   console.log(data);
   if (isError) {
-    return <h1>"Couldn't find the movies, sorry"</h1>;
+    return (
+      <h1 className="typography-primary text-white">
+        Couldn't find the movies, sorry
+      </h1>
+    );
   } else if (isLoading) {
-    return <h1>'wait a sec...'</h1>;
+    return <h1 className="typography-primary text-white">Is Loading...</h1>;
   } else
     return (
       <div>
@@ -23,8 +27,10 @@ export default function ListMovies() {
             <h4 className="typography-primary text-white">wait a sec...</h4>
           }
           endMessage={
-            <p style={{ textAlign: 'center', color: 'white' }}>
-              <b>Yay! You have seen it all</b>
+            <p style={{ textAlign: 'center' }}>
+              <b className="typography-primary text-white">
+                Yay! You have seen it all
+              </b>
             </p>
           }
         >
