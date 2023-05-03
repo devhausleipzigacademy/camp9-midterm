@@ -19,7 +19,6 @@ async function getInfiniteMovies(
   pageNumber: number,
   selectedGenresParameter: string
 ) {
-  console.log(selectedGenresParameter);
   const response = await axios.get<MovieDbResponse>(
     `https://api.themoviedb.org/3/discover/movie?api_key=${
       import.meta.env.VITE_TMDB_KEY
