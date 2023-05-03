@@ -19,7 +19,9 @@ export default function ListMovies() {
             fetchNextPage();
           }}
           hasMore={!!hasNextPage}
-          loader={<h4 className="text-white">wait a sec...</h4>}
+          loader={
+            <h4 className="typography-primary text-white">wait a sec...</h4>
+          }
           endMessage={
             <p style={{ textAlign: 'center', color: 'white' }}>
               <b>Yay! You have seen it all</b>
