@@ -56,3 +56,11 @@ export type PersonImagesRequest = {
   id: number;
   profiles: { file_path: string }[];
 };
+
+export type SignupUser = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};

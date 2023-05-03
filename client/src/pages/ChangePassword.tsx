@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import HeaderPage from '../components/HeaderPage';
-import SingleInputFieldLogIn from '../components/SingleInputFieldLogIn';
+import SingleInputFieldLogIn from '../components/SingleInputField';
 
 function ChangePassword() {
   return (

@@ -1,0 +1,22 @@
+POST http://localhost:8000/api/1.0/user/signup HTTP/1.1
+content-type: application/json
+    
+    {
+        "username": "Julian",
+        "email": "Julian@web.de",
+        "password": "123456"
+    }
+
+###
+
+POST  http://localhost:8000 HTTP/1.1
+content-type: application/json
+
+    {
+        "name": "John",
+        "age": 30
+    }
+
+###
+
+DELETE http://localhost:8000 HTTP/1.1

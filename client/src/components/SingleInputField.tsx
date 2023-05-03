@@ -1,20 +1,22 @@
 import { useState } from 'react';
 
 type Props = {
-<<<<<<< HEAD:src/components/SingleInputFieldLogIn.tsx
-  placeholder: 'your@email.com' | 'Enter your Password' | 'Enter New Password';
-  svg?: 'email' | 'key' | boolean;
-  type: 'email' | 'password';
-=======
   placeholder: string;
-  svg: 'email' | 'key' | 'name';
-  type: string;
->>>>>>> main:src/components/SingleInputField.tsx
+  svg?: 'email' | 'key' | 'name' | boolean;
+  type: 'text' | 'password' | 'email';
+  id: string;
+  inputValue: string;
+  setInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function SingleInputFieldLogIn({ placeholder, svg, type }: Props) {
-  const [inputValue, setInputValue] = useState('');
-
+function SingleInputFieldLogIn({
+  placeholder,
+  svg,
+  type,
+  id,
+  inputValue,
+  setInputValue,
+}: Props) {
   return (
     <div className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 mt-5">
       <div className="flex gap-5">
@@ -38,13 +40,14 @@ function SingleInputFieldLogIn({ placeholder, svg, type }: Props) {
             }
           />
         </svg>
-        <label className="flex">
+        <label className="flex" htmlFor={id}>
           <input
+            id={id}
             type={type}
             value={inputValue}
             placeholder={placeholder}
             className="bg-dark-light typography-body"
-            onChange={e => setInputValue(e.target.value)}
+            onChange={e => setInputValue(e)}
           />
         </label>
       </div>

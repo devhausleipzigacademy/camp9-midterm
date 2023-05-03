@@ -14,7 +14,7 @@ import Genres from './pages/Genres';
 import Credits from './pages/Credits';
 import LogInPage from './pages/LogInPage';
 import Movies from './pages/Movies';
-import EmojieProvider from './Context/GenreContext';
+import EmojieProvider from './contexts/GenreContext';
 import Account from './pages/Account';
 
 import SelectSeats from './pages/SelectSeats';
@@ -87,7 +87,13 @@ export const router = createBrowserRouter([
   },
 ]);
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // keeps the fetched data in cache for 5 minutes
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
