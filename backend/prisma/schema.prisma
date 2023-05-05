@@ -21,15 +21,38 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+// create a model for a Seat id, row, number, price, booking, bookingId
+model Seat {
+  id        String   @id @default(uuid())
+  row       String
+  number    Int
+  price     Decimal
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  screenings SeatInScreening[]
+}
+
 // Create a type Screening encompassing id, date, time, movieId, bookings
 model Screening {
   id        String    @id @default(uuid())
-  date      DateTime
-  time      String
+  dateAndTime      DateTime
   movieId   String
   bookings  Booking[]
+  seats SeatInScreening[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+}
+
+// the in-between model for seats in a screening, containing an isBooked field
+model SeatInScreening{
+  id String @id @default(uuid())
+  isBooked Boolean @default(false)
+  seat Seat @relation(fields:[seatId], references: [id])
+  seatId String
+  screening Screening @relation(fields:[screeningId], references: [id])
+  screeningId String
+  booking   Booking? @relation(fields: [bookingId], references: [id])
+  bookingId String?
 }
 
 // Create a type for a Booking including id, screening, screeningId, seats, user, userId, createdAt, updatedAt
@@ -37,21 +60,9 @@ model Booking {
   id          String     @id @default(uuid())
   screening   Screening  @relation(fields: [screeningId], references: [id])
   screeningId String
-  seats       Seat[]   
+  seats       SeatInScreening[]   
   user        User       @relation(fields: [userId], references: [id])
   userId      String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-}
-
-// create a model for a Seat id, row, number, price, booking, bookingId
-model Seat {
-  id        String   @id @default(uuid())
-  row       String
-  number    Int
-  price     Int
-  booking   Booking? @relation(fields: [bookingId], references: [id])
-  bookingId String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
