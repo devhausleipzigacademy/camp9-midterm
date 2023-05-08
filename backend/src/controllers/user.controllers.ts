@@ -42,3 +42,17 @@ export const loginController = (
   console.log(req.body);
   res.send({ token: 'jwt' });
 };
+
+export const getSingleUserController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = await prisma.user.findUnique({
+    where: { id: req.params.id },
+    include: {
+      bookings: true,
+    },
+  });
+  res.send(user);
+};

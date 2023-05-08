@@ -1,6 +1,9 @@
 import Button from '../components/Button';
+import { useGetSingleUser } from '../hooks/useGetSingleUser';
 
 function EditProfileInputForm() {
+  const user = useGetSingleUser('048338d5-5cb9-4e5d-8129-aaf8d5d33395');
+  console.log(user);
   return (
     <form className="flex flex-col gap-36 p-4 h-full content-between justify-between">
       <div className="flex flex-col gap-5 p-4">

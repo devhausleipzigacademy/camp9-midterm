@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {
+  getSingleUserController,
   loginController,
   signupController,
 } from '../controllers/user.controllers';
@@ -20,5 +21,11 @@ router.post('/signup', validate(userValidation), signupController);
 //@access Public
 
 router.post('/login', validate(loginValidation), loginController);
+
+//@route GET /api/1.0/user/:id
+//@desc Get a single user
+//@access Private
+
+router.get('/:id', getSingleUserController);
 
 export default router;
