@@ -10,6 +10,7 @@ import { loginValidation } from '../validate/loginValidation';
 
 const router = Router();
 
+
 //@route POST /api/1.0/user/signup
 //@desc Register user
 //@access Public
