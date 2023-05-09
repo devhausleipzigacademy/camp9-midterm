@@ -29,4 +29,6 @@ router.post('/login', validate(loginValidation), loginController);
 
 router.get('/:id', getSingleUserController);
 
+
+
 export default router;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../components/Button';
 import { useGetSingleUser } from '../hooks/useGetSingleUser';
 
@@ -5,6 +6,11 @@ function EditProfileInputForm() {
   const { data, isLoading, isError } = useGetSingleUser(
     '048338d5-5cb9-4e5d-8129-aaf8d5d33395'
   );
+
+  const user = { ...data };
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -19,8 +25,6 @@ function EditProfileInputForm() {
     console.log('submit');
   }
 
-  const user = data;
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -32,14 +36,15 @@ function EditProfileInputForm() {
             htmlFor="Change first name"
             className="text-white dark:text-dark text-lg"
           >
-            {user.firstName}
+            First name
           </label>
           <input
+            onChange={e => setFirstName(e.target.value)}
+            value={firstName}
             type="text"
             name="Change first name"
             id="Change first name"
-            placeholder="Change your name"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 text-white"
           />
         </div>
         <div>
@@ -47,14 +52,15 @@ function EditProfileInputForm() {
             htmlFor="Change last name"
             className="text-white text-lg dark:text-dark"
           >
-            {user.lastName}
+            Last name
           </label>
           <input
+            onChange={e => setLastName(e.target.value)}
+            value={lastName}
             type="text"
             name="Change last name"
             id="Change last name"
-            placeholder="Change your last name"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 text-white"
           />
         </div>
         <div>
@@ -62,14 +68,15 @@ function EditProfileInputForm() {
             htmlFor="Change email"
             className="text-white text-lg dark:text-dark"
           >
-            {user.email}
+            Email
           </label>
           <input
+            onChange={e => setEmail(e.target.value)}
+            value={email}
             type="email"
             name="Change email"
             id="Change email"
-            placeholder="Change your email"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 text-white"
           />
         </div>
       </div>

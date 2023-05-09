@@ -48,7 +48,6 @@ export const getSingleUserController = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(req.params.id);
   const user = await prisma.user.findUnique({
     where: { id: req.params.id },
     include: {
