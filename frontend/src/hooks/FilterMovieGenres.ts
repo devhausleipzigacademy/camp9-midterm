@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export interface filteredMovies {
+export interface FilteredMovies {
   Genre: string;
   Emoji: string;
   id: number;
@@ -18,10 +18,9 @@ export function getMovieList() {
 
 export function getGenresMovie(genreid: number[]) {
   return axios
-    .get<filteredMovies>(
+    .get<FilteredMovies>(
       `https://api.themoviedb.org/3${BaseUrl}&with_genres=${genreid}`
     )
     .then(res => res.data);
 }
 const test = getMovieList();
-console.log(test);

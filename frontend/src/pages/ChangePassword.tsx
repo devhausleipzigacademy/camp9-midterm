@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../components/Button';
 import HeaderPage from '../components/HeaderPage';
 import SingleInputFieldLogIn from '../components/SingleInputField';
@@ -34,6 +33,9 @@ function ChangePassword() {
           placeholder={'Enter your Password'}
           svg={false}
           type="password"
+          id=""
+          inputValue=""
+          setInputValue={() => {}}
         ></SingleInputFieldLogIn>
         <h2 className="text-white text-lg pt-4 dark:text-dark-light ">
           {' '}
@@ -43,6 +45,9 @@ function ChangePassword() {
           placeholder={'Enter New Password'}
           svg={false}
           type="password"
+          id=""
+          inputValue=""
+          setInputValue={() => {}}
         ></SingleInputFieldLogIn>
         <div className="my-8 p-8">
           <Button>Save Changes</Button>

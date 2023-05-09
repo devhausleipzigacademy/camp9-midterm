@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import ToggleButton from '../components/ToggleButton';
 import LogInForm from '../components/LogInForm';
-import { Link } from 'react-router-dom';
-import Button from '../components/Button';
 import SignUpForm from '../components/SignUpForm';
 
 function LogInPage() {

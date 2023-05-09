@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import './index.css';
-import WelcomeHeader from './components/WelcomeHeader';
 import NavigationLayout from './components/NavigationLayout';
 import MovieDetails from './pages/MovieDetails';
 import Ticket from './pages/Ticket';
@@ -16,11 +15,13 @@ import LogInPage from './pages/LogInPage';
 import Movies from './pages/Movies';
 import EmojieProvider from './contexts/GenreContext';
 import Account from './pages/Account';
-
 import SelectSeats from './pages/SelectSeats';
 import ChangePassword from './pages/ChangePassword';
 import FavoriteGenres from './pages/FavoriteGenres';
 import EditProfile from './pages/EditProfile';
+import BookmarkedMovies from './pages/BookmarkedMovies';
+import BookmarkedMoviesProvider from './contexts/BookmarkedMoviesContext';
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -34,15 +35,16 @@ export const router = createBrowserRouter([
         path: '/movies',
         element: <Movies />,
       },
+      { path: '/bookmarks', element: <BookmarkedMovies /> },
     ],
   },
   {
     path: '/login',
-    element: <LogInPage />, // insert your page here
+    element: <LogInPage />,
   },
   {
     path: '/genres',
-    element: <Genres />, // insert your page here
+    element: <Genres />,
   },
   {
     path: '/movies/:id',
@@ -54,11 +56,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dates/:id',
-    element: <BookDateAndTime />, // insert your page here
+    element: <BookDateAndTime />,
   },
   {
     path: '/seats/:id',
-    element: <SelectSeats/>, // insert your page here
+    element: <SelectSeats />,
   },
   {
     path: '/success',
@@ -97,10 +99,12 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <EmojieProvider>
-        <RouterProvider router={router} />
-      </EmojieProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <BookmarkedMoviesProvider>
+        <EmojieProvider>
+          <RouterProvider router={router} />
+        </EmojieProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </BookmarkedMoviesProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

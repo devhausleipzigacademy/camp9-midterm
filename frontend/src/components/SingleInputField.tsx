@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 type Props = {
   placeholder: string;
   svg?: 'email' | 'key' | 'name' | boolean;

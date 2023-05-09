@@ -2,23 +2,23 @@ import { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { useGetNowPlayingMovies } from '../hooks/useGetNowPlayingMovies';
-import { useGetMoviesByQuery } from '../hooks/useGetMoviesByQuery';
+import { useGetMoviesBySearchQuery } from '../hooks/useMovies';
 import { Movie } from '../utilities/types';
 import { useNavigate } from 'react-router-dom';
+import { useGetMovies } from '../hooks/useMovies';
 
 export default function SearchBar() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<Movie | null>(null);
   const [query, setQuery] = useState('');
 
-  const { data: dataMoviesByQuery } = useGetMoviesByQuery(query);
+  const { data: dataMoviesByQuery } = useGetMoviesBySearchQuery(query);
 
   const {
     isLoading: isLoadingNowPlayingMovies,
     isError: isErrorNowPlayingMovies,
     data: dataNowPlayingMovies,
-  } = useGetNowPlayingMovies();
+  } = useGetMovies();
 
   if (isLoadingNowPlayingMovies) {
     return <span>Loading...</span>;
@@ -28,7 +28,11 @@ export default function SearchBar() {
     return <span>Error!</span>;
   }
 
-  const nowPlayingMovies = dataNowPlayingMovies.results;
+  if (typeof dataNowPlayingMovies == 'string') {
+    return <span>Error!</span>;
+  }
+
+  const nowPlayingMovies = dataNowPlayingMovies.pages[0].results;
 
   const moviesByQuery = dataMoviesByQuery?.results || [];
 

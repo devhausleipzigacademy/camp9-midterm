@@ -3,10 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import { minutesToHoursAndMinutes } from '../utilities/minutesToHoursAndMinutes';
 import { firstOneOrTwoGenres } from '../utilities/firstOneOrTwoGenres';
 import { returnNameOfCrewMember } from '../utilities/returnNameOfCrewMember';
-import { useGetMovieDetails } from '../hooks/useGetMovieDetails';
+import { useGetMovieDetails } from '../hooks/useMovies';
 import HeaderPage from '../components/HeaderPage';
+import { useBookmarks } from '../contexts/BookmarkedMoviesContext';
+import { Movie } from '../utilities/types';
 
 function MovieDetails() {
+  const { bookmarkedMovies, toggleBookmark } = useBookmarks();
   const { id } = useParams();
 
   const { data, isLoading, isError } = useGetMovieDetails(parseInt(id!));
@@ -19,9 +22,22 @@ function MovieDetails() {
     throw new Error('no data found');
   }
 
+  const movie = data as unknown as Movie;
+
+  function onHeartButtonClick() {
+    data && toggleBookmark(movie);
+  }
+
   return (
     <article className="pb-7 h-screen">
-      <HeaderPage children="Movie Detail" hasHeartButton={true} />
+      <HeaderPage
+        isLiked={bookmarkedMovies.some(
+          bookmarkedMovie => bookmarkedMovie.id === data.id
+        )}
+        children="Movie Detail"
+        hasHeartButton={true}
+        onHeartButtonClick={onHeartButtonClick}
+      />
       <div className="px-5 pb-7 h-full flex flex-col">
         <img
           className="rounded-md mt-5"

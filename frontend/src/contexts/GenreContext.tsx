@@ -1,108 +1,81 @@
-import React, {
-  Children,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
-import { emojieLibrary } from './EmojieLibrary';
-import { Emojie } from '../stories/GenreEmojies.stories';
+import { createContext, useContext, useState } from 'react';
+import { emojieLibrary as genreLibrary } from './EmojieLibrary';
+import { GenreLibraryEntry } from '../utilities/types';
 
-export interface EmojieLibraryEntry {
-  Genre: string;
-  Emoji: string;
-  id: number;
-  GenreId: number;
-  isSelected: boolean;
+interface GenreContext {
+  genreLibrary: GenreLibraryEntry[];
+  toggleGenre: (id: number) => void;
+  filteredGenreLibrary: GenreLibraryEntry[];
+  genreIDs: number[];
+  genreCounter: number;
 }
 
-interface EmojieLibraryContext {
-  emojieLibrary: EmojieLibraryEntry[];
-  toggleEmojie: (id: number) => void;
-  filteredEmojieLibrary: EmojieLibraryEntry[];
-  /*filteredLibrary: (isSelected: boolean) => void;*/
-  counter: number;
-  countingEmojies: (isSelected: boolean) => void;
-}
-
-export const EmojieContext = createContext<EmojieLibraryContext>({
-  emojieLibrary: emojieLibrary,
-  toggleEmojie: (id: number) => {},
-  filteredEmojieLibrary: emojieLibrary,
-  /*filteredLibrary: (isSelected: boolean) => {},*/
-  counter: 0,
-  countingEmojies: (isSelected: boolean) => {},
+export const GenreContext = createContext<GenreContext>({
+  genreLibrary: genreLibrary,
+  toggleGenre: (id: number) => {},
+  filteredGenreLibrary: genreLibrary,
+  genreIDs: [],
+  genreCounter: 0,
 });
 
-export const useEmojieLibrary = () => useContext(EmojieContext);
+//this is the hook that is used in the components to access the context!
+//example: const { genreIDs } = useGenreContext();;
+//the values for the hooke are defined in line 22-29
+export const useGenreContext = () => useContext(GenreContext);
 
-function EmojieProvider({ children }: { children: any }) {
-  const [emojiesState, setEmojieState] = useState(emojieLibrary);
-  const [filteredEmojies, setFilteredEmojie] = useState(emojiesState);
-  const [counter, setCounter] = useState(0);
+function GenreProvider({ children }: { children: any }) {
+  const [filteredGenres, setFilteredGenres] = useState(genreLibrary);
+  const [genreIDs, setGenreIDs] = useState<number[]>([]);
 
-  function toggleEmojie(id: number) {
-    ///SelectFunction to display when emojie is selected
-    const newEmojieLibrary = emojieLibrary.map(emojie => {
-      if (emojie.id === id) {
-        emojie.isSelected = !emojie.isSelected;
+  function toggleGenre(id: number) {
+    //this function toggles the isSelected boolean in the genreLibrary to true or false
+    const newGenreLibrary = genreLibrary.map(genre => {
+      if (genre.id === id) {
+        genre.isSelected = !genre.isSelected;
       }
-      return emojie;
+      return genre;
     });
-    const filteredEmojieLibrary = emojiesState.filter(emojie => {
-      if (emojie.isSelected === true) {
-        return emojie;
+    setFilteredGenres(newGenreLibrary);
+
+    // this function filters the genreLibrary to only show the selected genres.
+    const filteredGenreLibrary = genreLibrary.filter(genre => {
+      if (genre.isSelected === true) {
+        return genre;
       }
     });
-    setEmojieState(newEmojieLibrary);
-    if (filteredEmojieLibrary.length <= 4) {
-      const notSelectedEmojies = newEmojieLibrary.filter(emojie => {
-        return emojie.isSelected === false;
+
+    //this sets the state for the genreIDs to only show the selected genres IDs.
+    //this is used to filter the movies by genre.
+    const newGenreIDs = filteredGenreLibrary.map(genreID => genreID.GenreId);
+    setGenreIDs(newGenreIDs);
+
+    //this sets the state for the filtered genreLibrary (home screen) to only show the selected genres.
+    //if the selected genres are less than 4, it will show the not selected genres as well.
+    if (filteredGenreLibrary.length <= 4) {
+      const notSelectedGenres = newGenreLibrary.filter(genre => {
+        return genre.isSelected === false;
       });
-      return setFilteredEmojie([
-        ...filteredEmojieLibrary,
-        ...notSelectedEmojies.slice(0, 4 - filteredEmojieLibrary.length),
+      return setFilteredGenres([
+        ...filteredGenreLibrary,
+        ...notSelectedGenres.slice(0, 4 - filteredGenreLibrary.length),
       ]);
     }
-    setFilteredEmojie(filteredEmojieLibrary);
-  }
-
-  ///FilterFunction --- to show selected emojies in Favorites List
-  // function filteredLibrary() {
-  //   const filteredEmojieLibrary = emojiesState.filter(emojie => {
-  //     if (emojie.isSelected === true) {
-  //       return emojie;
-  //     }
-  //   });
-  //   if (filteredEmojieLibrary.length <= 4) {
-  //     console.log('filteredEmojieLibrary');
-  //   }
-  //   console.log(filteredEmojieLibrary.length + 1);
-  //   setFilteredEmojie(filteredEmojieLibrary);
-  // }
-
-  function countingEmojies(isSelected: boolean) {
-    if (isSelected) {
-      setCounter(counter - 1);
-    } else {
-      setCounter(counter + 1);
-    }
+    setFilteredGenres(filteredGenreLibrary);
   }
 
   return (
-    <EmojieContext.Provider
+    <GenreContext.Provider
       value={{
-        emojieLibrary: emojiesState,
-        toggleEmojie,
-        filteredEmojieLibrary: filteredEmojies,
-        /*filteredLibrary,*/
-        counter,
-        countingEmojies,
+        genreLibrary: genreLibrary,
+        toggleGenre: toggleGenre,
+        filteredGenreLibrary: filteredGenres,
+        genreIDs: genreIDs,
+        genreCounter: genreIDs.length,
       }}
     >
       {children}
-    </EmojieContext.Provider>
+    </GenreContext.Provider>
   );
 }
 
-export default EmojieProvider;
+export default GenreProvider;

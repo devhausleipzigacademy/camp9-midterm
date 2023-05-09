@@ -1,6 +1,6 @@
 import SearchBar from '../components/Searchbar';
 import UpcomingMovies from '../components/UpcomingMovies';
-import GenreFavorites from '../components/genre/GenreFavorites';
+import GenreFavorites from '../components/GenreFavorites';
 import avatar from '../assets/Avatar.png';
 
 function Home() {

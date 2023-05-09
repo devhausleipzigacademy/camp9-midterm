@@ -2,10 +2,9 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Link } from 'react-router-dom';
 import { AddToCalendarButton } from 'add-to-calendar-button-react';
 import Button from '../components/Button';
-import { useGetMovieDetails } from '../hooks/useGetMovieDetails';
+import { useGetMovieDetails } from '../hooks/useMovies';
 
 function Ticket() {
-  // const { id } = useParams();
   const id = 502356; //Mock as SuperMario. please change to useParams() when you are ready to test
 
   const { data, isLoading } = useGetMovieDetails(id);

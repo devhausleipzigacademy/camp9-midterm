@@ -9,7 +9,6 @@ async function loginUser(user: LoginUser) {
     `${import.meta.env.VITE_SERVER_URL}/api/1.0/user/login`,
     user
   );
-  console.log(data);
   return data;
 }
 

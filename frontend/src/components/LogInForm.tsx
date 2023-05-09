@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import SingleInputFieldLogIn from './SingleInputField';
 import { LoginUser } from '../utilities/types';
-import { Link } from 'react-router-dom';
 import Button from './Button';
-import { useLoginMutation } from '../hooks/useLoginUser';
+import { useLoginMutation } from '../hooks/useUser';
 
 type LogInForm = React.FormHTMLAttributes<HTMLFormElement>;
 
@@ -13,7 +12,7 @@ function LogInForm() {
     password: '',
   });
 
-  const { isLoading, isError, data, error, mutate } = useLoginMutation();
+  const { mutate } = useLoginMutation();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

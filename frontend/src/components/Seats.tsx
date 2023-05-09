@@ -10,32 +10,6 @@ function Seats() {
     [null, 'F-1', 'F-2', 'F-3', null, 'F-4', 'F-5', 'F-6', null],
   ];
 
-  function flattenArrays(arrays: (string | null)[][]) {
-    const flattenedArray = arrays.reduce((acc, curr) => {
-      return [...acc, ...curr];
-    }, []);
-    return flattenedArray;
-  }
-  const allSeats = flattenArrays(seatsArray);
-
-  const seatsWithoutNull = allSeats.filter(value => {
-    return value !== null;
-  });
-
-  function randomSeats(seatsArray: string[]) {
-    let random = [];
-    for (let i = 0; i < 8; i++) {
-      const randomIndex = Math.floor(Math.random() * seatsArray.length);
-      random.push(seatsArray[randomIndex]);
-    }
-    return random;
-  }
-  const disabledSeats = randomSeats(seatsWithoutNull as string[]);
-  // type: front, middle, back
-  // price x3
-  // give data by on click e.value
-  // after clicking: store an object with price and tupe
-
   const seatTypes: Record<string, SeatSection> = {
     A: 'front',
     B: 'middle',
@@ -49,20 +23,20 @@ function Seats() {
     <div className="grid grid-rows-6 grid-cols-9 gap-3 m-5">
       {seatsArray.map(row => {
         //map through 1st array with null
-
         return row.map((seat, index) => {
           //map through each row and take the seat&index
-
           if (seat) {
             // if there is a seat and not null...
             const seatType = seatTypes[seat.substring(0, 1)];
             //... create a substring to get the first letter and bind it to seatType
-
-            if (disabledSeats.includes(seat)) {
-              return <Seat disabled={true} key={index} type={seatType} />;
-            } else {
-              return <Seat disabled={false} key={index} type={seatType} />;
-            }
+            return (
+              <Seat
+                seatId={seat}
+                disabled={false}
+                key={index}
+                type={seatType}
+              />
+            );
           } else {
             return <div key={index}></div>;
           }
@@ -73,19 +47,3 @@ function Seats() {
 }
 
 export default Seats;
-
-// interface Props {
-//   seat: {
-//     price?: string;
-//     type?: string;
-//   };
-// }
-
-// seat: {
-// price?: string;
-// type?: string;
-// };
-// const = seat: {
-// price?: string;
-// type?: string;
-// };
