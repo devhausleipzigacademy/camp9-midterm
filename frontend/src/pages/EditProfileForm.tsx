@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/Button';
 import { useGetSingleUser } from '../hooks/useGetSingleUser';
 
@@ -7,10 +7,17 @@ function EditProfileInputForm() {
     '048338d5-5cb9-4e5d-8129-aaf8d5d33395'
   );
 
-  const user = { ...data };
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [email, setEmail] = useState(user.email);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    if (data) {
+      setFirstName(data.firstName);
+      setLastName(data.lastName);
+      setEmail(data.email);
+    }
+  }, [data]);
 
   if (isLoading) {
     return <div>Loading...</div>;
