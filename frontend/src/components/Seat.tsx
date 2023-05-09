@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 type Props = {
   disabled: Boolean;
-  type: SeatSection
+  type: SeatSection;
 };
 
 export type SeatSection = 'front' | 'middle' | 'back';
@@ -20,7 +20,7 @@ export function Seat(props: Props) {
           ? 'bg-[#363740]'
           : selected
           ? 'bg-[#FFB43A]'
-          : 'bg-white'
+          : 'bg-white dark:bg-slate-300'
       )}
       onClick={e => {
         switch (selected) {

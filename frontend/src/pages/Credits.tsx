@@ -25,7 +25,7 @@ function Credits({ movieId }: { movieId?: number }) {
     <>
       {/* the header and the cast/crew buttons */}
       <HeaderPage>Cast & Crew</HeaderPage>
-      <div className="text-white flex justify-between px-5 pt-2 pb-7 bg-dark select-none sticky top-[76px] h-[25px] box-content">
+      <div className="text-white dark:text-dark flex justify-between px-5 pt-2 pb-7 bg-dark dark:bg-white select-none sticky top-[76px] h-[25px] box-content">
         <CreditsButton
           status={crewOrCast === 'cast' ? 'active' : 'passive'}
           onClick={() => setCrewOrCast('cast')}
@@ -50,17 +50,19 @@ function Credits({ movieId }: { movieId?: number }) {
         ) : isError ? (
           //if there is an error with fetching credits data
           <div className="my-4">
-            <h4 className="typography-body">
+            <h4 className="typography-body dark:text-dark-light">
               {`Error with fetching credits info for movie id ${
                 movieId ? movieId : id
               }.`}
             </h4>
-            <h4 className="typography-description">{String(error)}</h4>
+            <h4 className="typography-description dark:text-dark">
+              {String(error)}
+            </h4>
           </div>
         ) : data ? (
           //if fetching credits data is successfull
 
-          <ul className="flex flex-col text-white gap-4">
+          <ul className="flex flex-col text-white dark:text-dark gap-4">
             {crewOrCast === 'cast'
               ? data.credits.cast.map(castmember => (
                   <CreditsListItem
@@ -87,7 +89,7 @@ function Credits({ movieId }: { movieId?: number }) {
           <></>
         )}
         {/* the little dark stripe at the bottom */}
-        <footer className="w-screen h-10 bg-dark fixed -bottom-2 left-0"></footer>
+        <footer className="w-screen h-10 bg-dark dark:bg-white fixed -bottom-2 left-0"></footer>
       </section>
     </>
   );

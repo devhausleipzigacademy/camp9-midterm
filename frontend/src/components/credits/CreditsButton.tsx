@@ -14,7 +14,7 @@ export default function CastCrewButton({ status, ...props }: Props) {
         'w-[155px] h-[25px] typography-body rounded-lg',
         status === 'passive'
           ? 'text-white-dimmed bg-dark-light'
-          : 'text-white border border-white bg-white-dimmed'
+          : 'text-white dark:text-dark dark:bg-slate-300 dark:border-dark-light border border-white bg-white-dimmed'
       )}
     >
       {props.children}

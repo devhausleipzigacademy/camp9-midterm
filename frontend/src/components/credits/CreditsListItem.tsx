@@ -26,11 +26,13 @@ function CreditsListItem({ actorName, character, id }: Props) {
           className="bg-gray-300 w-16 h-16 object-cover border-none"
         />
       ) : (
-        <UserCircleIcon className="w-16 h-16 text-white-dimmed"></UserCircleIcon>
+        <UserCircleIcon className="w-16 h-16 text-white-dimmed dark:text-dark-light"></UserCircleIcon>
       )}
       <div className="flex flex-col gap-1 justify-center">
-        <h2 className="typography-primary text-white">{actorName}</h2>
-        <h3 className="typography-description text-white-dimmed">
+        <h2 className="typography-primary text-white dark:text-dark">
+          {actorName}
+        </h2>
+        <h3 className="typography-description text-white-dimmed dark:text-dark-light">
           {character}
         </h3>
       </div>

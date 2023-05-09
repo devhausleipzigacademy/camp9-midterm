@@ -59,10 +59,10 @@ export default function SearchBar() {
     <div>
       <Combobox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-          <div className="relative w-full cursor-default overflow-hidden rounded-full bg-dark-light text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow">
+          <div className="relative w-full cursor-default overflow-hidden rounded-full bg-dark-light dark:bg-slate-300 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white dark:focus-visible:ring-dark focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow">
             <div className="pl-6 h-full absolute border-solid flex justify-center items-center">
               <MagnifyingGlassIcon
-                className="text-white-dimmed "
+                className="text-white-dimmed dark:text-dark-light"
                 style={{
                   width: '18px',
                 }}
@@ -71,7 +71,7 @@ export default function SearchBar() {
             <Combobox.Input
               onKeyUp={e => handleSubmitMovie(e)}
               placeholder="Search"
-              className="h-12 w-full rounded-full bg-transparent border-none py-2 pl-3 pr-10 text-sm leading-5 text-white-dimmed focus:ring-0 indent-10"
+              className="h-12 w-full rounded-full bg-transparent border-none py-2 pl-3 pr-10 text-sm leading-5 text-white-dimmed dark:text-dark-light focus:ring-0 indent-10"
               displayValue={(movie: Movie) => movie && movie.title}
               onChange={event => setQuery(event.target.value)}
             />
@@ -101,7 +101,9 @@ export default function SearchBar() {
                     key={movie.id}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? 'bg-yellow text-white' : 'text-gray-900'
+                        active
+                          ? 'bg-yellow text-white dark:text-dark'
+                          : 'text-gray-900'
                       }`
                     }
                     value={movie}
@@ -118,7 +120,9 @@ export default function SearchBar() {
                         {selected ? (
                           <span
                             className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active ? 'text-white-dimmed' : 'text-yellow'
+                              active
+                                ? 'text-white-dimmed dark:text-dark-light'
+                                : 'text-yellow'
                             }`}
                           >
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />

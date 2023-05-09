@@ -5,6 +5,9 @@ import darkMode from '../hooks/DarkMode';
 
 function Account() {
   const navigation = useNavigate();
+  function darkMode() {
+    return document.querySelector('html')?.classList.toggle('dark');
+  }
   return (
     <div>
       <HeaderPage children="Account Settings" />

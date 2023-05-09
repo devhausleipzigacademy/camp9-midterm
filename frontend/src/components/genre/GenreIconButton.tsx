@@ -27,7 +27,7 @@ function GenreIconButton(props: Emoji) {
           'rounded-xl w-14 h-14 text-3xl flex flex-col justify-center items-center cursor-pointer',
           props.isSelected
             ? 'bg-white/40 dark:bg-dark-light'
-            : 'bg-[#363740] dark:bg-white/40'
+            : 'bg-[#363740] dark:bg-slate-300'
         )}
       >
         <span>{props.emoji}</span>

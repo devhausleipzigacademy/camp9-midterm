@@ -31,13 +31,13 @@ function MovieDetails() {
         <h2 className="typography-title mt-5">{data.title}</h2>
         <div className="mt-3 flex justify-between">
           <div className="flex gap-3">
-            <p className="typography-description text-white">
+            <p className="typography-description text-white dark:text-dark-light">
               {data.release_date.split('-')[0]}
             </p>
-            <p className="typography-description">
+            <p className="typography-description dark:text-dark">
               {firstOneOrTwoGenres(data)}
             </p>
-            <p className="typography-description">
+            <p className="typography-description dark:text-dark">
               {minutesToHoursAndMinutes(data)}
             </p>
           </div>
@@ -45,17 +45,23 @@ function MovieDetails() {
             <span className="typography-description text-green">
               {data && Math.round(data?.vote_average * 10) + '%'}
             </span>
-            <span className="typography-description">Score</span>
+            <span className="typography-description dark:text-dark-light">
+              Score
+            </span>
           </div>
         </div>
         <div className="flex justify-between items-center mt-2 w-full gap-10">
           <div className="grid grid-cols-2 h-full content-around">
-            <div className="typography-secondary font-bold">Director:</div>
-            <div className="typography-secondary font-bold whitespace-nowrap text-white">
+            <div className="typography-secondary dark:text-dark-light font-bold">
+              Director:
+            </div>
+            <div className="typography-secondary dark:text-dark-light font-bold whitespace-nowrap text-white">
               {returnNameOfCrewMember('Director', data)}
             </div>
-            <div className="typography-description">Writer:</div>
-            <div className="typography-description whitespace-nowrap text-white">
+            <div className="typography-description dark:text-dark-light">
+              Writer:
+            </div>
+            <div className="typography-description whitespace-nowrap text-white dark:text-dark-light">
               {returnNameOfCrewMember('Screenplay', data)}
             </div>
           </div>
@@ -64,8 +70,8 @@ function MovieDetails() {
           </Link>
         </div>
         <hr className="mt-3"></hr>
-        <h2 className="typography-title mt-3">Synopsis</h2>
-        <p className="typography-body mt-3">
+        <h2 className="typography-title mt-3 dark:text-dark">Synopsis</h2>
+        <p className="typography-body mt-3 dark:text-dark">
           {data?.overview.slice(0, 150) + '...'}
         </p>
         <a

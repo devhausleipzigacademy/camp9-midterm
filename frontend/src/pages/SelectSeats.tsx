@@ -10,7 +10,7 @@ function SelectSeats() {
         <Seats />
         <div className="flex gap-[25px] mt-1 mb-8">
           <div className="flex gap-[6px]">
-            <div className="bg-white dark:bg-dark h-4 w-4 rounded-full"></div>
+            <div className="bg-white dark:bg-slate-300 h-4 w-4 rounded-full"></div>
             <p className="typography-description dark:text-dark">Available</p>
           </div>
           <div className="flex gap-[6px]">
@@ -18,7 +18,7 @@ function SelectSeats() {
             <p className="typography-description dark:text-dark">Selected</p>
           </div>
           <div className="flex gap-[6px]">
-            <div className="bg-dark-light dark:bg-white h-4 w-4 rounded-full"></div>
+            <div className="bg-dark-light dark:bg-dark-light h-4 w-4 rounded-full"></div>
             <p className="typography-description dark:text-dark">Reserved</p>
           </div>
         </div>

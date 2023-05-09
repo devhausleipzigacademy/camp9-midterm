@@ -25,7 +25,7 @@ function GenreBtn(props: Props) {
           'w-[56px] h-[56px] text-[30px] flex justify-center items-center rounded-lg text-center',
           props.isSelected
             ? 'bg-white/40 dark:bg-dark-light'
-            : 'bg-[#363740] dark:bg-yellow'
+            : 'bg-[#363740] dark:bg-slate-300'
         )}
       >
         {props.emojie}
