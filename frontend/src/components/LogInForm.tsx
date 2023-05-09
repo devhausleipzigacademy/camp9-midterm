@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import SingleInputFieldLogIn from './SingleInputField';
 import { LoginUser } from '../utilities/types';
-import { Link } from 'react-router-dom';
 import Button from './Button';
-import { useLoginMutation } from '../hooks/useLoginUser';
+import { useLoginMutation } from '../hooks/useUser';
 
 type LogInForm = React.FormHTMLAttributes<HTMLFormElement>;
 

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 type Props = {
   children: string;
   hasHeartButton?: boolean;
+  isLiked?: boolean;
   onHeartButtonClick?: () => void;
 };
 
@@ -17,8 +18,6 @@ type Props = {
 // it has its own padding, so take care it does not get additional vertical and horizontal padding from your component
 
 function HeaderPage(props: Props) {
-  // state that toggles if the little heart is displayed as full or empty
-  const [isLiked, setIsLiked] = useState(false);
   // function used to navigate back to the last page when the arrow back is clicked
   const navigation = useNavigate();
   // the return statement with the jsx component
@@ -35,12 +34,11 @@ function HeaderPage(props: Props) {
         {props.hasHeartButton && (
           <button
             onClick={() => {
-              setIsLiked(!isLiked);
               props.onHeartButtonClick && props.onHeartButtonClick();
             }}
             className={
               `w-full transition-colors duration-500 ` +
-              (isLiked ? `text-red` : `stroke-red text-transparent`)
+              (props.isLiked ? `text-red` : `stroke-red text-transparent`)
             }
           >
             <HeartIcon></HeartIcon>

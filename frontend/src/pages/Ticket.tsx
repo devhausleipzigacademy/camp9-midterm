@@ -2,7 +2,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Link } from 'react-router-dom';
 import { AddToCalendarButton } from 'add-to-calendar-button-react';
 import Button from '../components/Button';
-import { useGetMovieDetails } from '../hooks/useGetMovieDetails';
+import { useGetMovieDetails } from '../hooks/useMovies';
 
 function Ticket() {
   // const { id } = useParams();

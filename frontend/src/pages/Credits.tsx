@@ -5,7 +5,7 @@ import CreditsListItem from '../components/credits/CreditsListItem';
 import HeaderPage from '../components/HeaderPage';
 import UseAnimations from 'react-useanimations';
 import loading from 'react-useanimations/lib/loading';
-import { useGetMovieDetails } from '../hooks/useGetMovieDetails';
+import { useGetMovieDetails } from '../hooks/useMovies';
 
 //
 // Component
