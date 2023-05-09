@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import Button from '../components/Button';
 import { useGetSingleUser } from '../hooks/useGetSingleUser';
+import { useEditProfileMutation } from '../hooks/useUser';
 
 function EditProfileInputForm() {
   const { data, isLoading, isError } = useGetSingleUser(
     '048338d5-5cb9-4e5d-8129-aaf8d5d33395'
   );
+
+  const { mutate } = useEditProfileMutation();
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -27,9 +30,12 @@ function EditProfileInputForm() {
     return <div>Error...</div>;
   }
 
+  const updatedData = { ...data, firstName, lastName, email };
+
   function handleSubmit(e: any) {
     e.preventDefault();
-    console.log('submit');
+    mutate(updatedData);
+    console.log(updatedData);
   }
 
   return (

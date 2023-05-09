@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { LoginUser, SignupUser } from '../utilities/types';
+import { LoginUser, SignupUser, User } from '../utilities/types';
 import { useMutation } from '@tanstack/react-query';
 // =====================================================================
 // useSignupMutation type, query function and hook
@@ -16,11 +16,11 @@ async function signupUser(user: SignupUser) {
 }
 
 export function useSignupMutation() {
-  const mutiation = useMutation<SignupResponse, AxiosError, SignupUser>({
+  const mutation = useMutation<SignupResponse, AxiosError, SignupUser>({
     mutationFn: user => signupUser(user),
   });
 
-  return mutiation;
+  return mutation;
 }
 // =====================================================================
 // useLoginMutation type, query function and hook
@@ -38,9 +38,28 @@ async function loginUser(user: LoginUser) {
 }
 
 export function useLoginMutation() {
-  const mutiation = useMutation<LoginResponse, AxiosError, LoginUser>({
+  const mutation = useMutation<LoginResponse, AxiosError, LoginUser>({
     mutationFn: user => loginUser(user),
   });
 
-  return mutiation;
+  return mutation;
+}
+
+type EditProfileResponse = { token: string };
+
+async function editProfile(user: User) {
+  const { data } = await axios.post<EditProfileResponse>(
+    `${import.meta.env.VITE_SERVER_URL}/api/1.0/user/editprofile`,
+    user
+  );
+  console.log(data);
+  return data;
+}
+
+export function useEditProfileMutation() {
+  const mutation = useMutation<EditProfileResponse, AxiosError, User>({
+    mutationFn: user => editProfile(user),
+  });
+
+  return mutation;
 }
