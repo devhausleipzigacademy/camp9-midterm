@@ -2,13 +2,24 @@ import Button from '../components/Button';
 import { useGetSingleUser } from '../hooks/useGetSingleUser';
 
 function EditProfileInputForm() {
-  // fetch user data using axios from backend
-  const user = useGetSingleUser('048338d5-5cb9-4e5d-8129-aaf8d5d33395');
+  const { data, isLoading, isError } = useGetSingleUser(
+    '048338d5-5cb9-4e5d-8129-aaf8d5d33395'
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error...</div>;
+  }
 
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log('submit');
   }
+
+  const user = data;
 
   return (
     <form
@@ -21,7 +32,7 @@ function EditProfileInputForm() {
             htmlFor="Change first name"
             className="text-white dark:text-dark text-lg"
           >
-            {user?.data?.firstName}
+            {user.firstName}
           </label>
           <input
             type="text"
@@ -36,7 +47,7 @@ function EditProfileInputForm() {
             htmlFor="Change last name"
             className="text-white text-lg dark:text-dark"
           >
-            {user?.data?.lastName}
+            {user.lastName}
           </label>
           <input
             type="text"
@@ -51,7 +62,7 @@ function EditProfileInputForm() {
             htmlFor="Change email"
             className="text-white text-lg dark:text-dark"
           >
-            {user?.data?.email}
+            {user.email}
           </label>
           <input
             type="email"
