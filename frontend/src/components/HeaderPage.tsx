@@ -23,7 +23,7 @@ function HeaderPage(props: Props) {
   const navigation = useNavigate();
   // the return statement with the jsx component
   return (
-    <header className="flex justify-between items-center px-5 pb-6 pt-8 sticky top-0 bg-dark dark:bg-white">
+    <header className="flex justify-between items-center px-5 pb-6 pt-8 sticky top-0 z-10 bg-dark dark:bg-white">
       {/* the little back arrow */}
       <button onClick={() => navigation(-1)}>
         <ChevronLeftIcon className="typography-title w-5 dark:stroke-dark"></ChevronLeftIcon>
