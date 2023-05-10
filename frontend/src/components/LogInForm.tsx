@@ -12,7 +12,7 @@ function LogInForm() {
     password: '',
   });
 
-  const { isLoading, isError, data, error, mutate } = useLoginMutation();
+  const { mutate } = useLoginMutation();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

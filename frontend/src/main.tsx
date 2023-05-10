@@ -15,13 +15,12 @@ import LogInPage from './pages/LogInPage';
 import Movies from './pages/Movies';
 import EmojieProvider from './contexts/GenreContext';
 import Account from './pages/Account';
-
+import SelectSeats from './pages/SelectSeats';
 import ChangePassword from './pages/ChangePassword';
 import FavoriteGenres from './pages/FavoriteGenres';
 import EditProfile from './pages/EditProfile';
 import BookmarkedMovies from './pages/BookmarkedMovies';
 import BookmarkedMoviesProvider from './contexts/BookmarkedMoviesContext';
-import SelectSeats from './pages/SelectSeats';
 
 export const router = createBrowserRouter([
   {
@@ -41,11 +40,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LogInPage />, // insert your page here
+    element: <LogInPage />,
   },
   {
     path: '/genres',
-    element: <Genres />, // insert your page here
+    element: <Genres />,
   },
   {
     path: '/movies/:id',
@@ -57,11 +56,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dates/:id',
-    element: <BookDateAndTime />, // insert your page here
+    element: <BookDateAndTime />,
   },
   {
     path: '/seats/:id',
-    element: <SelectSeats/>, // insert your page here
+    element: <SelectSeats />,
   },
   {
     path: '/success',

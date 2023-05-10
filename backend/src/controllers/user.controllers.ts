@@ -29,7 +29,6 @@ export const signupController = async (
       bookings: true,
     },
   });
-  console.log(req.body);
   res.send(newUser.email);
 };
 
@@ -39,7 +38,6 @@ export const loginController = (
   next: NextFunction
 ) => {
   //authenticating user
-  console.log(req.body);
   res.send({ token: 'jwt' });
 };
 

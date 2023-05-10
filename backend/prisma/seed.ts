@@ -31,8 +31,6 @@ async function createMockData() {
   //   );
 
   await Promise.all([...userPromises]);
-
-  console.log('Mock data created successfully!');
 }
 
 createMockData()

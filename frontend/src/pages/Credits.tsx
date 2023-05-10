@@ -7,25 +7,16 @@ import UseAnimations from 'react-useanimations';
 import loading from 'react-useanimations/lib/loading';
 import { useGetMovieDetails } from '../hooks/useMovies';
 
-//
-// Component
-//
-function Credits({ movieId }: { movieId?: number }) {
+function Credits() {
   const { id } = useParams();
-  const { data, isLoading, error, isError } = useGetMovieDetails(
-    movieId ? movieId : parseInt(id!)
-  );
-
+  const { data, isLoading, error, isError } = useGetMovieDetails(parseInt(id!));
+  // flag to check if the cast or crew list should be rendered
   const [crewOrCast, setCrewOrCast] = useState<'cast' | 'crew'>('cast');
-
-  //
-  // JSX returns
-  //
-  return (
+  // header component with the cast/crew buttons
+  const pageHeader = (
     <>
-      {/* the header and the cast/crew buttons */}
       <HeaderPage>Cast & Crew</HeaderPage>
-      <div className="text-white flex justify-between px-5 pt-2 pb-7 bg-dark select-none sticky top-[76px] h-[25px] box-content">
+      <div className="text-white flex justify-between px-5 pt-2 pb-7 bg-dark select-none sticky top-[76px] h-[25px] z-10 box-content">
         <CreditsButton
           status={crewOrCast === 'cast' ? 'active' : 'passive'}
           onClick={() => setCrewOrCast('cast')}
@@ -39,27 +30,48 @@ function Credits({ movieId }: { movieId?: number }) {
           Crew
         </CreditsButton>
       </div>
-      {/* the section with content */}
-      <section className="pt-0 pb-9 px-6 mb-2">
-        {isLoading ? (
-          // if the credits data is still loading
+    </>
+  );
+  //footer component, the little dark stripe at the bottom
+  const pageFooter = (
+    <footer className="w-screen h-10 bg-dark fixed -bottom-2 left-0"></footer>
+  );
+  //
+  // JSX returns
+  //
+  if (isLoading)
+    return (
+      <>
+        {pageHeader}
+        <section className="pt-0 pb-9 px-6 mb-2">
           <div className="flex gap-2 my-3">
             <UseAnimations animation={loading} strokeColor="#FFF" />
             <h4 className="typography-title text-white">LOADING.....</h4>
           </div>
-        ) : isError ? (
-          //if there is an error with fetching credits data
+          {pageFooter}
+        </section>
+      </>
+    );
+  else if (isError)
+    return (
+      <>
+        {pageHeader}
+        <section className="pt-0 pb-9 px-6 mb-2">
           <div className="my-4">
             <h4 className="typography-body">
-              {`Error with fetching credits info for movie id ${
-                movieId ? movieId : id
-              }.`}
+              {`Error with fetching credits info for movie id ${id}.`}
             </h4>
             <h4 className="typography-description">{String(error)}</h4>
           </div>
-        ) : data ? (
-          //if fetching credits data is successfull
-
+          {pageFooter}
+        </section>
+      </>
+    );
+  else
+    return (
+      <>
+        {pageHeader}
+        <section className="pt-0 pb-9 px-6 mb-2">
           <ul className="flex flex-col text-white gap-4">
             {crewOrCast === 'cast'
               ? data.credits.cast.map(castmember => (
@@ -83,14 +95,10 @@ function Credits({ movieId }: { movieId?: number }) {
                   />
                 ))}
           </ul>
-        ) : (
-          <></>
-        )}
-        {/* the little dark stripe at the bottom */}
-        <footer className="w-screen h-10 bg-dark fixed -bottom-2 left-0"></footer>
-      </section>
-    </>
-  );
+          {pageFooter}
+        </section>
+      </>
+    );
 }
 
 export default Credits;
