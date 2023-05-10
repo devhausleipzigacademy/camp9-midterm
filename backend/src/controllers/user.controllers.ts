@@ -63,7 +63,7 @@ export const editProfileController = async (
   next: NextFunction
 ) => {
   const user = await prisma.user.update({
-    where: { id: req.params.id },
+    where: { id: req.body.id },
     data: {
       email: req.body.email,
       password: req.body.password,

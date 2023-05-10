@@ -35,7 +35,6 @@ function EditProfileInputForm() {
   function handleSubmit(e: any) {
     e.preventDefault();
     mutate(updatedData);
-    console.log(updatedData);
   }
 
   return (

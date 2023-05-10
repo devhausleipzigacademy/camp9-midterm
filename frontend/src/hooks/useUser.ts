@@ -52,7 +52,6 @@ async function editProfile(user: User) {
     `${import.meta.env.VITE_BACKEND_URL}/api/1.0/user/:id/editprofile`,
     user
   );
-  console.log(data);
   return data;
 }
 
