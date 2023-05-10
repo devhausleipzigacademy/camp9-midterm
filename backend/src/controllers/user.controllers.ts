@@ -56,3 +56,20 @@ export const getSingleUserController = async (
   });
   res.send(user);
 };
+
+export const editProfileController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = await prisma.user.update({
+    where: { id: req.params.id },
+    data: {
+      email: req.body.email,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+    },
+  });
+  res.send(user);
+};

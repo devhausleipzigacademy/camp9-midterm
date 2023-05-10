@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {
+  editProfileController,
   getSingleUserController,
   loginController,
   signupController,
@@ -9,7 +10,6 @@ import { userValidation } from '../validate/userValidation';
 import { loginValidation } from '../validate/loginValidation';
 
 const router = Router();
-
 
 //@route POST /api/1.0/user/signup
 //@desc Register user
@@ -29,6 +29,14 @@ router.post('/login', validate(loginValidation), loginController);
 
 router.get('/:id', getSingleUserController);
 
+//@route PATCH /api/1.0/user/editprofile
+//@desc Edit user profile
+//@access Private
 
+router.patch(
+  '/:id/editprofile',
+  validate(userValidation),
+  editProfileController
+);
 
 export default router;

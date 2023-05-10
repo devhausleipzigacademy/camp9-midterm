@@ -48,8 +48,8 @@ export function useLoginMutation() {
 type EditProfileResponse = { token: string };
 
 async function editProfile(user: User) {
-  const { data } = await axios.post<EditProfileResponse>(
-    `${import.meta.env.VITE_SERVER_URL}/api/1.0/user/editprofile`,
+  const { data } = await axios.patch<EditProfileResponse>(
+    `${import.meta.env.VITE_BACKEND_URL}/api/1.0/user/:id/editprofile`,
     user
   );
   console.log(data);
