@@ -16,7 +16,7 @@ function EditProfileInputForm() {
             name="Change first name"
             id="Change first name"
             placeholder="Change your name"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light dark:bg-slate-300 h-[48px] flex items-center justify-between p-5 gap-5 dark:text-dark-light"
           />
         </div>
         <div>
@@ -24,14 +24,14 @@ function EditProfileInputForm() {
             htmlFor="Change last name"
             className="text-white text-lg dark:text-dark"
           >
-            Lastname
+            Last Name
           </label>
           <input
             type="text"
             name="Change last name"
             id="Change last name"
-            placeholder="Change your lastname"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            placeholder="Change your last name"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:bg-slate-300 dark:text-dark-light"
           />
         </div>
         <div>
@@ -45,8 +45,8 @@ function EditProfileInputForm() {
             type="email"
             name="Change email"
             id="Change email"
-            placeholder="Change your email"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            placeholder="Change your Email"
+            className="w-full rounded-lg bg-dark-light h-[48px] dark:bg-slate-300 flex items-center justify-between p-5 gap-5 dark:text-dark-light"
           />
         </div>
       </div>

@@ -89,7 +89,7 @@ export default function SearchBar() {
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
           >
-            <Combobox.Options className="absolute w-full mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+            <Combobox.Options className="absolute w-full mt-1 max-h-60 overflow-auto rounded-md dark:bg-white bg-dark  py-1 shadow-lg ring-1 ring-black dark:ring-dark-light ring-opacity-5 focus:outline-none text-sm">
               {filteredMovies.length === 0 && query !== '' ? (
                 <div className="relative cursor-default select-none py-2 px-4 text-dark-light">
                   Nothing found.
@@ -103,7 +103,7 @@ export default function SearchBar() {
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
                         active
                           ? 'bg-yellow text-white dark:text-dark'
-                          : 'text-gray-900'
+                          : 'text-white-dimmed dark:text-dark-light'
                       }`
                     }
                     value={movie}

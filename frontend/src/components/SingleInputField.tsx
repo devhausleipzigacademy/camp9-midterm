@@ -18,7 +18,7 @@ function SingleInputFieldLogIn({
   setInputValue,
 }: Props) {
   return (
-    <div className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5">
+    <div className="w-full rounded-lg bg-dark-light dark:bg-slate-300 h-[48px] flex items-center justify-between p-5 gap-5">
       <div className="flex gap-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ function SingleInputFieldLogIn({
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6 text-white-dimmed "
+          className="w-6 h-6 text-white-dimmed dark:text-dark-light"
         >
           <path
             strokeLinecap="round"
@@ -46,7 +46,7 @@ function SingleInputFieldLogIn({
             type={type}
             value={inputValue}
             placeholder={placeholder}
-            className="bg-dark-light typography-body"
+            className="bg-dark-light dark:bg-slate-300 typography-body"
             onChange={e => setInputValue(e)}
           />
         </label>

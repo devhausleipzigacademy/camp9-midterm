@@ -13,8 +13,8 @@ export default function ToggleButton({ status, ...props }: Props) {
       className={clsx(
         'w-[155px] h-[25px] typography-body rounded-lg',
         status === 'passive'
-          ? 'text-white-dimmed bg-dark-light'
-          : 'text-white border border-white bg-white-dimmed'
+          ? 'text-white-dimmed bg-dark-light dark:text-dark-light dark:bg-slate-300'
+          : 'text-white border border-white bg-white-dimmed dark:border-dark-light dark:bg-dark-light dark:text-dark'
       )}
     >
       {props.children}
