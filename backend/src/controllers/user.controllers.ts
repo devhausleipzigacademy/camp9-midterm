@@ -21,7 +21,6 @@ export const signupController = async (
   }
 
   const hashedPassword = await bcrypt.hash(req.body.password, 12);
-  console.log(hashedPassword);
   const newUser = await prisma.user.create({
     data: {
       email: req.body.email,
@@ -104,7 +103,7 @@ export const getSingleUserController = async (
   next: NextFunction
 ) => {
   const user = await prisma.user.findUnique({
-    where: { id: req.params.id },
+    where: { id: res.locals.userId },
     include: {
       bookings: true,
     },

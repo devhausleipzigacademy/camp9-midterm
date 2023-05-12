@@ -1,13 +1,16 @@
 import { Router } from 'express';
 import {
   checkAuthController,
+  editProfileController,
+  getSingleUserController,
   loginController,
   logoutController,
   signupController,
 } from '../controllers/user.controllers';
 import { validate } from '../middleware/validateResource';
-import { userValidation } from '../validate/userValidation';
+import { editUserValidation, userValidation } from '../validate/userValidation';
 import { loginValidation } from '../validate/loginValidation';
+import { isAuth } from '../middleware/isAuth';
 
 const router = Router();
 
@@ -34,5 +37,22 @@ router.delete('/logout', logoutController);
 //@access Public
 
 router.get('/checkauth', checkAuthController);
+
+//@route GET /api/1.0/user/:id
+//@desc Get a single user
+//@access Private
+
+router.get('/', isAuth, getSingleUserController);
+
+//@route PATCH /api/1.0/user/editprofile
+//@desc Edit user profile
+//@access Private
+
+router.patch(
+  '/editprofile',
+  isAuth,
+  validate(editUserValidation),
+  editProfileController
+);
 
 export default router;
