@@ -8,7 +8,7 @@ function Account() {
   const navigation = useNavigate();
   const { mutate } = useLogoutMutation();
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <HeaderPage children="Account Settings" />
       <div className="flex gap-1 p-2 px-4 items-center">
         <svg
@@ -25,13 +25,13 @@ function Account() {
             d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
           />
         </svg>
-        <h2 className="text-white text-xl dark:text-dark">Account</h2>
+        <h2 className="text-white  dark:text-dark">Account</h2>
       </div>
-      <hr className="bg-white-dimmed ml-[5%] mr-[5%] dark:bg-dark" />
+      <hr className="bg-white opacity-40 ml-[5%] mr-[5%] dark:bg-dark" />
       <div className="text-white-dimmed flex flex-col p-8 gap-11 text-lg">
         <Link
           to={'/editprofile'}
-          className="flex justify-between dark:text-dark"
+          className="flex text-sm justify-between dark:text-dark"
         >
           Edit Profile
           <svg
@@ -51,9 +51,9 @@ function Account() {
         </Link>
         <Link
           to={'/changepassword'}
-          className="flex justify-between dark:text-dark"
+          className="flex justify-between text-sm dark:text-dark"
         >
-          Change Passwort
+          Change Password
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -90,13 +90,13 @@ function Account() {
             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
           />
         </svg>
-        <h2 className="text-white text-xl dark:text-dark">Customisation</h2>
+        <h2 className="text-white dark:text-dark">Customization</h2>
       </div>
-      <hr className="bg-white-dimmed ml-[5%] mr-[5%] dark:bg-dark" />
+      <hr className="bg-white opacity-40 ml-[5%] mr-[5%] dark:bg-dark" />
       <div className="text-white-dimmed flex flex-col p-8 gap-11 text-lg">
         <Link
           to={'/favoritegenres'}
-          className="flex justify-between dark:text-dark"
+          className="flex justify-between text-sm dark:text-dark"
         >
           Favorites Genres
           <svg
@@ -114,7 +114,7 @@ function Account() {
             />
           </svg>
         </Link>
-        <a className="flex justify-between  dark:text-dark" href="">
+        <a className="flex justify-between text-sm   dark:text-dark" href="">
           Toggle Dark/Light
           <input
             onClick={darkMode}
@@ -124,7 +124,7 @@ function Account() {
           />
         </a>
       </div>
-      <div className="my-8 p-8">
+      <div className="mt-auto p-8">
         <Button
           onClick={() => {
             mutate(), navigation('/login');

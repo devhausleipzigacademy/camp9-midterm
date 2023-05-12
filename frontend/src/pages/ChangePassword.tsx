@@ -4,7 +4,7 @@ import SingleInputFieldLogIn from '../components/SingleInputField';
 
 function ChangePassword() {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <HeaderPage children="Change Password" />
       <div className="flex gap-1 p-2 px-4 items-center">
         <svg
@@ -22,11 +22,11 @@ function ChangePassword() {
           />
         </svg>
 
-        <h2 className="text-white text-xl dark:text-dark">Passwort</h2>
+        <h2 className="text-white text-lg dark:text-dark">Password</h2>
       </div>
-      <hr className="bg-white-dimmed ml-[5%] mr-[5%] dark:bg-dark" />
+      <hr className="bg-white opacity-40 ml-[5%] mr-[5%] dark:bg-dark" />
       <form className="px-8" action="" onSubmit={() => {}}>
-        <h2 className="text-white text-lg pt-4 dark:text-dark-light">
+        <h2 className="text-white pt-4 dark:text-dark-light">
           Passwort
         </h2>
         <SingleInputFieldLogIn
@@ -37,9 +37,9 @@ function ChangePassword() {
           inputValue=""
           setInputValue={() => {}}
         ></SingleInputFieldLogIn>
-        <h2 className="text-white text-lg pt-4 dark:text-dark-light ">
+        <h2 className="text-white pt-4 dark:text-dark-light ">
           {' '}
-          New Passwort
+          New Password
         </h2>
         <SingleInputFieldLogIn
           placeholder={'Enter New Password'}
@@ -49,10 +49,11 @@ function ChangePassword() {
           inputValue=""
           setInputValue={() => {}}
         ></SingleInputFieldLogIn>
-        <div className="my-8 p-8">
+
+      </form>
+      <div className="p-8 mt-auto w-full">
           <Button>Save Changes</Button>
         </div>
-      </form>
     </div>
   );
 }
