@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import { useGetSingleUser } from '../hooks/useGetSingleUser';
-import { useEditProfileMutation } from '../hooks/useUser';
+import { useEditProfileMutation, useGetSingleUser } from '../hooks/useUser';
+import { useNavigate } from 'react-router-dom';
 
 function EditProfileInputForm() {
-  const { data, isLoading, isError } = useGetSingleUser(
-    '048338d5-5cb9-4e5d-8129-aaf8d5d33395'
-  );
+  const { data, isLoading, isError } = useGetSingleUser();
+  const navigate = useNavigate();
 
   const { mutate } = useEditProfileMutation();
 
@@ -35,6 +34,9 @@ function EditProfileInputForm() {
   function handleSubmit(e: any) {
     e.preventDefault();
     mutate(updatedData);
+    alert('Profile updated successfully');
+
+    navigate('/');
   }
 
   return (
