@@ -2,9 +2,11 @@ import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import HeaderPage from '../components/HeaderPage';
 import darkMode from '../hooks/DarkMode';
+import { useLogoutMutation } from '../hooks/useUser';
 
 function Account() {
   const navigation = useNavigate();
+  const { mutate } = useLogoutMutation();
   return (
     <div>
       <HeaderPage children="Account Settings" />
@@ -123,7 +125,13 @@ function Account() {
         </a>
       </div>
       <div className="my-8 p-8">
-        <Button onClick={() => navigation(-1)}>Home</Button>
+        <Button
+          onClick={() => {
+            mutate(), navigation('/login');
+          }}
+        >
+          Logout
+        </Button>
       </div>
     </div>
   );

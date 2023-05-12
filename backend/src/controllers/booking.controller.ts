@@ -45,7 +45,7 @@ export const bookingController = async (
       },
       user: {
         connect: {
-          id: '048338d5-5cb9-4e5d-8129-aaf8d5d33395',
+          id: res.locals.userId,
         },
       },
       totalPrice: req.body.seats.reduce((acc, seat) => {

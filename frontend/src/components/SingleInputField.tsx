@@ -17,7 +17,7 @@ function SingleInputFieldLogIn({
 }: Props) {
   return (
     <div className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5">
-      <div className="flex gap-5">
+      <div className="flex gap-5 w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -38,13 +38,13 @@ function SingleInputFieldLogIn({
             }
           />
         </svg>
-        <label className="flex" htmlFor={id}>
+        <label className="flex w-full " htmlFor={id}>
           <input
             id={id}
             type={type}
             value={inputValue}
             placeholder={placeholder}
-            className="bg-dark-light typography-body"
+            className="bg-dark-light typography-body w-full indent-2  rounded-lg"
             onChange={e => setInputValue(e)}
           />
         </label>

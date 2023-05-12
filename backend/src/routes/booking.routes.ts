@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { bookingController } from '../controllers/booking.controller';
 import { bookingValidation } from '../validate/bookingValidation';
 import { validate } from '../middleware/validateResource';
+import { isAuth } from '../middleware/isAuth';
 
 const router = Router();
 
@@ -9,4 +10,4 @@ const router = Router();
 //@desc booking movie by user
 //@access Public // private ?
 
-router.post('/booking', validate(bookingValidation), bookingController);
+router.post('/booking', validate(bookingValidation), isAuth, bookingController);

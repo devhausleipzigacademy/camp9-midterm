@@ -20,3 +20,7 @@ content-type: application/json
 ###
 
 DELETE http://localhost:8000 HTTP/1.1
+
+
+###
+GET https://api.themoviedb.org/3/movie/now_playing?api_key=b83392e48747a4845ad80c2011eaa33b&language=en-US HTTP/1.1

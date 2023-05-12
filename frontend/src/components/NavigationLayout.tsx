@@ -1,14 +1,24 @@
-import './NavigationLayout.css';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {
   FilmIcon,
   HomeIcon,
   QueueListIcon,
   UserIcon,
 } from '@heroicons/react/24/solid';
+import { useCheckAuthQuery } from '../hooks/useUser';
 import { NavLink } from 'react-router-dom';
 
 function NavigationLayout() {
+  const navigate = useNavigate();
+  // is user loggedIn ?
+  // redirect to /login
+  const { isError, isLoading } = useCheckAuthQuery();
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+  if (isError) {
+    navigate('/login');
+  }
   return (
     <>
       <main>

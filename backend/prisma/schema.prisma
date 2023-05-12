@@ -57,3 +57,31 @@ model Seat {
 }
 
 
+model Movie {
+  id            Int      @id @default(autoincrement())
+  tmdbId        Int      @unique
+  title         String
+  backdropPath  String?
+  posterPath    String?
+  releaseDate   DateTime
+  runtime       Int?
+  voteAverage   Float?
+  overview      String?
+  credits       Credit[]
+  genres        Genre[]  @relation("MovieGenres")
+}
+
+model Genre {
+  id     Int     @id
+  name   String
+  movies Movie[] @relation("MovieGenres")
+}
+
+model Credit {
+  id        Int    @id @default(autoincrement())
+  tmdbId    Int    @unique
+  movieId   Int
+  movie     Movie  @relation(fields: [movieId], references: [id])
+  cast      Json?
+  crew      Json?
+}

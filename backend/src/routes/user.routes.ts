@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import {
-  editProfileController,
-  getSingleUserController,
+  checkAuthController,
   loginController,
+  logoutController,
   signupController,
 } from '../controllers/user.controllers';
 import { validate } from '../middleware/validateResource';
@@ -23,20 +23,16 @@ router.post('/signup', validate(userValidation), signupController);
 
 router.post('/login', validate(loginValidation), loginController);
 
-//@route GET /api/1.0/user/:id
-//@desc Get a single user
-//@access Private
+//@route POST /api/1.0/user/logout
+//@desc Logout user
+//@access Public
 
-router.get('/:id', getSingleUserController);
+router.delete('/logout', logoutController);
 
-//@route PATCH /api/1.0/user/editprofile
-//@desc Edit user profile
-//@access Private
+//@route GET /api/1.0/user/checkauth
+//@desc check if user is authenticated
+//@access Public
 
-router.patch(
-  '/:id/editprofile',
-  validate(userValidation),
-  editProfileController
-);
+router.get('/checkauth', checkAuthController);
 
 export default router;

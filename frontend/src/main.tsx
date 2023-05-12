@@ -21,6 +21,8 @@ import FavoriteGenres from './pages/FavoriteGenres';
 import EditProfile from './pages/EditProfile';
 import BookmarkedMovies from './pages/BookmarkedMovies';
 import BookmarkedMoviesProvider from './contexts/BookmarkedMoviesContext';
+import FullPageLayout from './components/FullPageLayout';
+import LogInLayout from './components/LogInLayout';
 
 export const router = createBrowserRouter([
   {
@@ -38,53 +40,66 @@ export const router = createBrowserRouter([
       { path: '/bookmarks', element: <BookmarkedMovies /> },
     ],
   },
+  // implement that login is not accessible when token exists (user is logged in)
   {
     path: '/login',
-    element: <LogInPage />,
+    element: <LogInLayout />,
+    children: [
+      {
+        index: true,
+        element: <LogInPage />,
+      },
+    ],
   },
   {
-    path: '/genres',
-    element: <Genres />,
-  },
-  {
-    path: '/movies/:id',
-    element: <MovieDetails />,
-  },
-  {
-    path: '/credits/:id',
-    element: <Credits />,
-  },
-  {
-    path: '/dates/:id',
-    element: <BookDateAndTime />,
-  },
-  {
-    path: '/seats/:id',
-    element: <SelectSeats />,
-  },
-  {
-    path: '/success',
-    element: <h1>BOOKING SUCCESSFULL</h1>, // insert your page here
-  },
-  {
-    path: '/ticket',
-    element: <Ticket />,
-  },
-  {
-    path: '/accountpage',
-    element: <Account />,
-  },
-  {
-    path: '/editprofile',
-    element: <EditProfile />,
-  },
-  {
-    path: '/changepassword',
-    element: <ChangePassword />,
-  },
-  {
-    path: '/favoriteGenres',
-    element: <FavoriteGenres />,
+    path: '/',
+    element: <FullPageLayout />,
+    children: [
+      {
+        path: '/genres',
+        element: <Genres />,
+      },
+      {
+        path: '/movies/:id',
+        element: <MovieDetails />,
+      },
+      {
+        path: '/credits/:id',
+        element: <Credits />,
+      },
+      {
+        path: '/dates/:id',
+        element: <BookDateAndTime />,
+      },
+      {
+        path: '/seats/:id',
+        element: <SelectSeats />,
+      },
+      {
+        path: '/success',
+        element: <h1>BOOKING SUCCESSFULL</h1>, // insert your page here
+      },
+      {
+        path: '/ticket',
+        element: <Ticket />,
+      },
+      {
+        path: '/accountpage',
+        element: <Account />,
+      },
+      {
+        path: '/editprofile',
+        element: <EditProfile />,
+      },
+      {
+        path: '/changepassword',
+        element: <ChangePassword />,
+      },
+      {
+        path: '/favoriteGenres',
+        element: <FavoriteGenres />,
+      },
+    ],
   },
 ]);
 

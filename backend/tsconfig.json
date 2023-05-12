@@ -5,7 +5,7 @@
     "outDir": "./dist",
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "baseUrl": "./backend",
     "paths": {
       "*": ["node_modules/*"]
     },

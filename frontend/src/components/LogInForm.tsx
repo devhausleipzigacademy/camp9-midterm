@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SingleInputFieldLogIn from './SingleInputField';
 import { LoginUser } from '../utilities/types';
 import Button from './Button';
 import { useLoginMutation } from '../hooks/useUser';
+import { useNavigate } from 'react-router-dom';
 
 type LogInForm = React.FormHTMLAttributes<HTMLFormElement>;
 
@@ -12,7 +13,15 @@ function LogInForm() {
     password: '',
   });
 
-  const { mutate } = useLoginMutation();
+  const navigate = useNavigate();
+
+  const { mutate, isSuccess } = useLoginMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/');
+    }
+  }, [isSuccess]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

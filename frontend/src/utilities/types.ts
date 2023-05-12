@@ -45,9 +45,15 @@ export type TMDBCast = {
   id: number;
   name: string;
   character: string;
+  credit_id: string;
 };
 
-export type TMDBCrew = { id: number; name: string; job: string };
+export type TMDBCrew = {
+  id: number;
+  name: string;
+  job: string;
+  credit_id: string;
+};
 
 export type MovieDbCreditsResponse = {
   id: number;

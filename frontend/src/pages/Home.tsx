@@ -15,7 +15,7 @@ function Home() {
             Let's relax and watch a movie!
           </p>
         </div>
-        <img src={avatar}></img>
+        <img alt='avatar' src={avatar}></img>
       </div>
       <div className="mt-7">
         <SearchBar />
