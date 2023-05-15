@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.routes';
 import cookieParser from 'cookie-parser';
+import bookingRoute from './routes/booking.routes';
 
 import cors from 'cors';
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(
 app.use(cookieParser());
 
 app.use('/api/1.0/user', userRouter);
+app.use('/api/1.0/booking', bookingRoute);
 
 app.listen(PORT, () => {
   console.log(`running on port ${PORT}`);

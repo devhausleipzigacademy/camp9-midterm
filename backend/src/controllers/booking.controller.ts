@@ -12,6 +12,7 @@ export const bookingController = async (
   let screening = await prisma.screening.findFirst({
     where: {
       date: req.body.date,
+      time: req.body.time,
       movieId: req.body.movieId,
     },
   });
@@ -19,6 +20,7 @@ export const bookingController = async (
     screening = await prisma.screening.create({
       data: {
         date: req.body.date,
+        time: req.body.time,
         movieId: req.body.movieId,
       },
     });

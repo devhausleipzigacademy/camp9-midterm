@@ -24,7 +24,8 @@ model User {
 // Create a type Screening encompassing id, date, time, movieId, bookings
 model Screening {
   id        String    @id @default(uuid())
-  date      DateTime
+  time      String
+  date      String
   movieId   String
   bookings  Booking[]
   createdAt DateTime  @default(now())

@@ -21,7 +21,6 @@ function SignUpForm() {
   });
 
   const { isLoading, isError, data, error, mutate } = useSignupMutation();
-  console.log(data, isLoading, isError, error);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);

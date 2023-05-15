@@ -21,7 +21,6 @@ export const signupController = async (
   }
 
   const hashedPassword = await bcrypt.hash(req.body.password, 12);
-  console.log(hashedPassword);
   const newUser = await prisma.user.create({
     data: {
       email: req.body.email,
@@ -96,4 +95,35 @@ export const checkAuthController = async (
   } catch (err) {
     res.status(401).send('Not authenticated');
   }
+};
+
+export const getSingleUserController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = await prisma.user.findUnique({
+    where: { id: res.locals.userId },
+    include: {
+      bookings: true,
+    },
+  });
+  res.send(user);
+};
+
+export const editProfileController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = await prisma.user.update({
+    where: { id: req.body.id },
+    data: {
+      email: req.body.email,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+    },
+  });
+  res.send(user);
 };

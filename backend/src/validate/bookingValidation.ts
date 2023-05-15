@@ -1,7 +1,8 @@
 import { z } from 'zod';
 export const bookingValidation = z.object({
   seats: z.array(z.string()),
-  date: z.date(),
+  time: z.string(),
+  date: z.string(),
   movieId: z.string(),
 });
 

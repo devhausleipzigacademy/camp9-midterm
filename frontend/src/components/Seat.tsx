@@ -38,8 +38,6 @@ export function Seat(props: Props) {
       };
     }
 
-    console.log(seatObject);
-
     return {
       ...seatObject,
       ...seatSectionCountKeyPair,

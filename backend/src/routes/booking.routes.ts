@@ -6,8 +6,10 @@ import { isAuth } from '../middleware/isAuth';
 
 const router = Router();
 
-//@route POST /api/1.0/user/booking
+//@route POST /api/1.0/booking
 //@desc booking movie by user
 //@access Public // private ?
 
-router.post('/booking', validate(bookingValidation), isAuth, bookingController);
+router.post('/', validate(bookingValidation), isAuth, bookingController);
+
+export default router

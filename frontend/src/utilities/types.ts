@@ -79,6 +79,13 @@ export type LoginUser = {
   password: string;
 };
 
+export type User = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+
 export type BookingResponse = { token: string };
 
 export type Booking = {
