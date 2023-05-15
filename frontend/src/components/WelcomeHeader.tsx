@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 
 type WelcomeHeader = Props;
 
-interface Props {
+type Props = {
   name?: string;
   image?: string;
-}
+};
 
 function WelcomeHeader({ name = 'Dan', image = Avatar, ...props }: Props) {
+  
   return (
     <header className="flex justify-between bg-[#1C1C27]">
       <div className="flex flex-col justify-between">
