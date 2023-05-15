@@ -55,7 +55,7 @@ function EditProfileInputForm() {
             type="text"
             name="Change first name"
             id="Change first name"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 text-white"
           />
         </div>
         <div>
@@ -71,7 +71,7 @@ function EditProfileInputForm() {
             type="text"
             name="Change last name"
             id="Change last name"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 text-white"
           />
         </div>
         <div>
@@ -84,13 +84,11 @@ function EditProfileInputForm() {
             type="email"
             name="Change email"
             id="Change email"
-            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 dark:text-white"
+            className="w-full rounded-lg bg-dark-light h-[48px] flex items-center justify-between p-5 gap-5 text-white"
           />
         </div>
       </div>
-      <div className="p-8 mt-auto w-full">
-        <Button>Save Changes</Button>
-      </div>
+      <Button size="md">Save Changes</Button>
     </form>
   );
 }
