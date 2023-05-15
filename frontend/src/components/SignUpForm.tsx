@@ -2,85 +2,89 @@ import React from 'react';
 import SingleInputField from './SingleInputField';
 import { useState } from 'react';
 import Button from './Button';
-import { useSignupMutation } from '../hooks/useUser';
-import { SignupUser } from '../utilities/types';
+import { useLoginMutation, useSignupMutation } from '../hooks/useUser';
+import { LoginUser, SignupUser, signUpSchema } from '../utilities/types';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
 
 type SignUpForm = React.FormHTMLAttributes<HTMLFormElement>;
 
 function SignUpForm() {
-  const [inputValues, setInputValues] = useState<SignupUser>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+  const { mutate, isLoading, isError, isSuccess } = useSignupMutation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupUser>({
+    resolver: zodResolver(signUpSchema),
   });
 
-  const { mutate } = useSignupMutation();
+  const navigate = useNavigate();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    mutate(inputValues);
+  if (isSuccess) {
+    navigate('/');
   }
+
+  if (isError) {
+    return <div>Something went wrong</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const onSubmit = (data: SignupUser) => {
+    mutate(data);
+  };
 
   return (
     <form
-      onSubmit={e => handleSubmit(e)}
+      onSubmit={handleSubmit(onSubmit)}
       noValidate
       className="flex flex-col gap-5"
     >
       <SingleInputField
+        error={errors.firstName}
         svg="name"
         placeholder="First name"
         type="text"
         id="firstname"
-        inputValue={inputValues.firstName}
-        setInputValue={e =>
-          setInputValues({ ...inputValues, firstName: e.target.value })
-        }
-      ></SingleInputField>
+        {...register('firstName')}
+      />
       <SingleInputField
+        error={errors.lastName}
         placeholder={'Last name'}
         svg={'name'}
         type="text"
         id="lastname"
-        inputValue={inputValues.lastName}
-        setInputValue={e =>
-          setInputValues({ ...inputValues, lastName: e.target.value })
-        }
-      ></SingleInputField>
+        {...register('lastName')}
+      />
       <SingleInputField
+        error={errors.email}
         placeholder={'your@email.com'}
         svg="email"
         type="email"
         id="email"
-        inputValue={inputValues.email}
-        setInputValue={e =>
-          setInputValues({ ...inputValues, email: e.target.value })
-        }
-      ></SingleInputField>
+        {...register('email')}
+      />
 
       <SingleInputField
+        error={errors.password}
         placeholder={'Password'}
         svg="key"
         type="password"
         id="password"
-        inputValue={inputValues.password}
-        setInputValue={e =>
-          setInputValues({ ...inputValues, password: e.target.value })
-        }
-      ></SingleInputField>
+        {...register('password')}
+      />
       <SingleInputField
+        error={errors.confirmPassword}
         placeholder={'Repeat your password'}
         svg="key"
         type="password"
         id="confirmPassword"
-        inputValue={inputValues.confirmPassword}
-        setInputValue={e =>
-          setInputValues({ ...inputValues, confirmPassword: e.target.value })
-        }
-      ></SingleInputField>
-
+        {...register('confirmPassword')}
+      />
       <Button type="submit" size="md">
         Sign Up
       </Button>

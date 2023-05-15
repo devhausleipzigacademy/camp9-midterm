@@ -1,61 +1,69 @@
 import React, { useEffect, useState } from 'react';
 import SingleInputFieldLogIn from './SingleInputField';
-import { LoginUser } from '../utilities/types';
+import { LoginUser, loginSchema } from '../utilities/types';
 import Button from './Button';
 import { useLoginMutation } from '../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type LogInForm = React.FormHTMLAttributes<HTMLFormElement>;
 
 function LogInForm() {
-  const [inputValues, setInputValues] = useState<LoginUser>({
-    email: '',
-    password: '',
-  });
+  const { mutate, isLoading, isError, isSuccess } = useLoginMutation();
 
   const navigate = useNavigate();
 
-  const { mutate, isSuccess } = useLoginMutation();
+  // instead of two way dataBinding use the useForms hook.
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginUser>({
+    resolver: zodResolver(loginSchema),
+  });
 
-  useEffect(() => {
-    if (isSuccess) {
-      navigate('/');
-    }
-  }, [isSuccess]);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    mutate(inputValues);
+  if (isSuccess) {
+    navigate('/');
   }
+
+  if (isError) {
+    return <div>Something went wrong</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const onSubmit = (data: LoginUser) => {
+    mutate(data);
+  };
 
   return (
     <>
       <form
         action=""
-        onSubmit={e => handleSubmit(e)}
+        onSubmit={handleSubmit(onSubmit)}
         noValidate
         className="flex flex-col gap-5"
       >
         <SingleInputFieldLogIn
+          error={errors.email}
           svg="email"
           placeholder="E-mail"
           type="text"
           id="email"
-          inputValue={inputValues.email}
-          setInputValue={e =>
-            setInputValues({ ...inputValues, email: e.target.value })
-          }
-        ></SingleInputFieldLogIn>
+          {...register('email')}
+        />
+
         <SingleInputFieldLogIn
+          error={errors.password}
           svg="key"
           placeholder="Password"
           type="password"
           id="password"
-          inputValue={inputValues.password}
-          setInputValue={e =>
-            setInputValues({ ...inputValues, password: e.target.value })
-          }
-        ></SingleInputFieldLogIn>
+          {...register('password')}
+        />
         <Button type="submit" size="md">
           Log In
         </Button>
