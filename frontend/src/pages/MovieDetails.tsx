@@ -29,7 +29,7 @@ function MovieDetails() {
   }
 
   return (
-    <article className="pb-7 h-screen">
+    <article className="pb-7 h-screen w-screen">
       <HeaderPage
         isLiked={bookmarkedMovies.some(
           bookmarkedMovie => bookmarkedMovie.id === data.id
@@ -38,7 +38,7 @@ function MovieDetails() {
         hasHeartButton={true}
         onHeartButtonClick={onHeartButtonClick}
       />
-      <div className="px-5 pb-7 h-full flex flex-col">
+      <div className="px-5 pb-7 flex flex-col">
         <img
           className="rounded-md mt-5"
           src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
@@ -64,7 +64,7 @@ function MovieDetails() {
             <span className="typography-description">Score</span>
           </div>
         </div>
-        <div className="flex justify-between items-center mt-2 w-full gap-10">
+        <div className="grid grid-cols-2 justify-between items-center mt-2 w-full gap-10">
           <div className="grid grid-cols-2 h-full content-around">
             <div className="typography-secondary font-bold">Director:</div>
             <div className="typography-secondary font-bold whitespace-nowrap text-white">
@@ -91,7 +91,8 @@ function MovieDetails() {
         >
           Read more
         </a>
-        <div className="flex-auto"></div>
+      </div>
+      <div className="mt-auto px-8">
         <Link to={`/dates/${id}`}>
           <Button>Get Reservation</Button>
         </Link>
