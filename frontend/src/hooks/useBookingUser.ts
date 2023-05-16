@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 async function bookingsUser(bookings: Booking) {
   const { data } = await axios.post(
     `${import.meta.env.VITE_SERVER_URL}/api/1.0/user/booking`,
-    bookingsUser
+    bookings
   );
   return data;
 }
