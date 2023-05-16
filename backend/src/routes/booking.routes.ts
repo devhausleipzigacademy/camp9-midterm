@@ -3,6 +3,7 @@ import { bookingController } from '../controllers/booking.controller';
 import { bookingValidation } from '../validate/bookingValidation';
 import { validate } from '../middleware/validateResource';
 import { isAuth } from '../middleware/isAuth';
+import { disabledSeatsController } from '../controllers/disabledSeats.controller';
 
 const router = Router();
 
@@ -12,4 +13,6 @@ const router = Router();
 
 router.post('/', validate(bookingValidation), isAuth, bookingController);
 
-export default router
+router.get('/', disabledSeatsController);
+
+export default router;
