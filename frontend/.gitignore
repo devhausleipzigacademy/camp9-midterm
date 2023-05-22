@@ -215,3 +215,6 @@ pnpm-lock.yaml
 
 # ignore pnpm-lock.yaml 
 pnpm-lock.yaml
+/test-results/
+/playwright-report/
+/playwright/.cache/

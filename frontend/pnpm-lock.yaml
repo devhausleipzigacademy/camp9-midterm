@@ -48,7 +48,7 @@ dependencies:
     version: 3.1.0(react@18.2.0)
   query:
     specifier: github:tanstack/react-query
-    version: github.com/tanstack/react-query/fd02255066ac3a136f6b62863387c486d0d560fc
+    version: github.com/tanstack/react-query/ae015f1cd6b3157c333fac66cf8078aabe0f4998
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -78,6 +78,9 @@ dependencies:
     version: 3.21.4
 
 devDependencies:
+  '@playwright/test':
+    specifier: ^1.34.0
+    version: 1.34.0
   '@storybook/addon-essentials':
     specifier: ^7.0.5
     version: 7.0.10(react-dom@18.2.0)(react@18.2.0)
@@ -1897,6 +1900,17 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@playwright/test@1.34.0:
+    resolution: {integrity: sha512-GIALJVODOIrMflLV54H3Cow635OfrTwOu24ZTDyKC66uchtFX2NcCRq83cLdakMjZKYK78lODNLQSYBj2OgaTw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@types/node': 20.1.2
+      playwright-core: 1.34.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /@prisma/client@4.14.0:
@@ -6730,6 +6744,11 @@ packages:
       find-up: 5.0.0
     dev: true
 
+  /playwright-core@1.34.0:
+    resolution: {integrity: sha512-fMUY1+iR6kYbJF/EsOOqzBA99ZHXbw9sYPNjwA4X/oV0hVF/1aGlWYBGPVUEqxBkGANDKMziYoOdKGU5DIP5Gg==}
+    engines: {node: '>=14'}
+    dev: true
+
   /polished@4.2.2:
     resolution: {integrity: sha512-Sz2Lkdxz6F2Pgnpi9U5Ng/WdWAUZxmHrNPoVlm3aAemxoy2Qy7LGjQg4uf8qKelDAUW94F4np3iH2YPf2qefcQ==}
     engines: {node: '>=10'}
@@ -8617,8 +8636,8 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  github.com/tanstack/react-query/fd02255066ac3a136f6b62863387c486d0d560fc:
-    resolution: {commit: fd02255066ac3a136f6b62863387c486d0d560fc, repo: git+ssh://git@github.com/tanstack/react-query.git, type: git}
+  github.com/tanstack/react-query/ae015f1cd6b3157c333fac66cf8078aabe0f4998:
+    resolution: {commit: ae015f1cd6b3157c333fac66cf8078aabe0f4998, repo: git+ssh://git@github.com/tanstack/react-query.git, type: git}
     name: query
     version: 0.0.0
     requiresBuild: true
