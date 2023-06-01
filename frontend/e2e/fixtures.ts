@@ -1,5 +1,5 @@
 import { Login } from './pageObjects/login';
-import { BrowserContext, test as base } from '@playwright/test';
+import { test as base } from '@playwright/test';
 
 interface CineAppFixtures {
   loginPage: Login;

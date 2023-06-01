@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "e2e": "pnpm playwright test"
+    "e2e": "playwright test"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",

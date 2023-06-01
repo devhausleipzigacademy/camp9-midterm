@@ -8,6 +8,9 @@ export class Login extends MainPage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
 
+  readonly emailError: Locator;
+  readonly passwordError: Locator;
+
   constructor(page: Page) {
     super(page);
 
@@ -20,6 +23,11 @@ export class Login extends MainPage {
     this.emailInput = this.page.getByPlaceholder('E-mail');
     this.passwordInput = this.page.getByPlaceholder('Password');
     this.loginButton = this.page.getByRole('button', { name: 'Log In' });
+
+    this.emailError = this.page.getByText('Please enter a valid email address');
+    this.passwordError = this.page.getByText(
+      'Password must be at least 6 characters long'
+    );
   }
 
   async validatePageElements() {
@@ -28,5 +36,10 @@ export class Login extends MainPage {
     await expect(this.emailInput).toBeVisible();
     await expect(this.passwordInput).toBeVisible();
     await expect(this.loginButton).toBeVisible();
+  }
+
+  async validateErrorMessages() {
+    await expect(this.emailError).toBeVisible();
+    await expect(this.passwordError).toBeVisible();
   }
 }
