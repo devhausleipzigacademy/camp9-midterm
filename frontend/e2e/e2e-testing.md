@@ -71,7 +71,21 @@ pnpm i @playwright/test --save-dev
 ```
 
 ```
-"e2e": "aplaywright test"
+"e2e": "playwright test"
+```
+
+Helpful additions to run tests:
+
+```
+PWDEBUG=1 pnpm run e2e // for debugging mode
+--headed  // to see the browser ui
+--project=chromium // to specify in which browser to run the tests
+```
+
+Full example:
+
+```
+PWDEBUG=1 pnpm run e2e someTestRegex  --headed --project=chromium
 ```
 
 ---

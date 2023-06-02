@@ -14,7 +14,7 @@ function LogInPage() {
         <div>
           <h1 className="typography-title">Welcome to Cine-Scape</h1>
           <p className="typography-body pt-3 pb-5">
-            You need to log in to be able to make reservations and add movies to
+            You need to log in to be able to make reservations and add movie to
             your watchlist.
           </p>
           <LogInForm></LogInForm>

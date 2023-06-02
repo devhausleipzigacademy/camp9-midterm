@@ -18,7 +18,7 @@ export class Login extends MainPage {
       name: 'Welcome to Cine-Scape',
     });
     this.description = this.page.getByText(
-      'You need to log in to be able to make reservations and add movies to you watchlist'
+      'You need to log in to be able to make reservations and add movies to your watchlist'
     );
     this.emailInput = this.page.getByPlaceholder('E-mail');
     this.passwordInput = this.page.getByPlaceholder('Password');
@@ -32,6 +32,8 @@ export class Login extends MainPage {
 
   async validatePageElements() {
     await expect(this.heading).toBeVisible();
+
+    await this.page.pause();
     await expect(this.description).toBeVisible();
     await expect(this.emailInput).toBeVisible();
     await expect(this.passwordInput).toBeVisible();

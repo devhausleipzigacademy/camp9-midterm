@@ -9,8 +9,6 @@ test.describe('Login', () => {
     await loginPage.validatePageElements();
   });
 
-  test('happy path login', async ({}) => {});
-
   test('that clicking on login if no fields are filled, leads to an error', async ({
     loginPage,
   }) => {
@@ -20,6 +18,4 @@ test.describe('Login', () => {
 
     await loginPage.validateErrorMessages();
   });
-
-  test('unhappy path login', async ({}) => {});
 });
