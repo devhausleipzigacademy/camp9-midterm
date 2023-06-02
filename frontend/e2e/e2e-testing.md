@@ -1,7 +1,7 @@
 ---
-title: "End-to-End Testing: An Overview & Introduction to Playwright"
-author: "Vera Scheunert"
-date: "2023-05-22"
+title: 'End-to-End Testing: An Overview & Introduction to Playwright'
+author: 'Vera Scheunert'
+date: '2023-05-22'
 ---
 
 Introduction to
@@ -67,11 +67,11 @@ Node.js library \* automate Chromium, WebKit, and Firefox browsers \* cross-brow
 ## Installing & Configuring playwright
 
 ```bash
-npm npm i @playwright/test --save-dev
+pnpm i @playwright/test --save-dev
 ```
 
 ```
-"e2e": "pnpm playwright test"
+"e2e": "aplaywright test"
 ```
 
 ---
@@ -79,20 +79,20 @@ npm npm i @playwright/test --save-dev
 ## Basic example of playwright
 
 ```javascript
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-test("has title", async ({ page }) => {
-  await page.goto("https://playwright.dev/");
+test('has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test("get started link", async ({ page }) => {
-  await page.goto("https://playwright.dev/");
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
 
   // Click the get started link.
-  await page.getByRole("link", { name: "Get started" }).click();
+  await page.getByRole('link', { name: 'Get started' }).click();
 
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.\*intro/);

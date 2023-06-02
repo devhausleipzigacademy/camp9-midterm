@@ -5,7 +5,7 @@ test.describe('Login', () => {
     await page.goto('http://localhost:5173');
   });
 
-  test.only('that the correct items are displayed', async ({ loginPage }) => {
+  test('that the correct items are displayed', async ({ loginPage }) => {
     await loginPage.validatePageElements();
   });
 
