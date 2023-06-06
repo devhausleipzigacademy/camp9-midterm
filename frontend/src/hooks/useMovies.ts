@@ -2,7 +2,6 @@ import axios from 'axios';
 import {
   MovieDbResponse,
   MovieDetailDbResponse,
-  Movie_DB,
   PersonImagesRequest,
 } from '../utilities/types';
 import { useGenreContext } from '../contexts/GenreContext';
@@ -36,7 +35,7 @@ async function getMovies(pageNumber: number, selectedGenreIDs: Array<number>) {
   const queryString = parseQueryString(URLParameters);
   // the axios GET request
   const response = await axios.get<MovieDbResponse>(
-    `${import.meta.env.VITE_SERVER_URL}/api/1.0/movies/allmovies${queryString}`
+    `${import.meta.env.VITE_SERVER_URL}api/1.0/movies/allmovies${queryString}`
   );
   return response.data;
 }
@@ -69,7 +68,7 @@ async function getMoviesBySearchQuery(searchQuery: string) {
   const response = await axios.get<MovieDbResponse>(
     `${
       import.meta.env.VITE_SERVER_URL
-    }/api/1.0/movies/search?query=${searchQuery}`
+    }api/1.0/movies/search?query=${searchQuery}`
   );
   return response.data;
 }
@@ -90,7 +89,7 @@ export function useGetMoviesBySearchQuery(searchQuery: string) {
 async function getMovieDetails(movieId: number) {
   // the axios GET request
   const response = await axios.get<MovieDetailDbResponse>(
-    `${import.meta.env.VITE_SERVER_URL}/api/1.0/movies/${movieId}`
+    `${import.meta.env.VITE_SERVER_URL}api/1.0/movies/${movieId}`
   );
   return response.data;
 }
@@ -135,8 +134,8 @@ export function useGetPersonImages(personId: number) {
 
 // this function fetches movies with or without given genres from the database
 async function getNowPlayingMovies(genreIds: string) {
-  const response = await axios.get<Movie_DB[]>(
-    `${import.meta.env.VITE_SERVER_URL}/api/1.0/movies?genres=${genreIds}`
+  const response = await axios.get(
+    `${import.meta.env.VITE_SERVER_URL}api/1.0/movies?genres=${genreIds}`
   );
   return response.data;
 }

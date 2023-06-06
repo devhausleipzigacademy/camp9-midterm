@@ -94,26 +94,6 @@ function Account() {
       </div>
       <hr className="bg-white opacity-40 ml-[5%] mr-[5%] dark:bg-dark" />
       <div className="text-white-dimmed flex flex-col p-8 gap-11 text-lg">
-        <Link
-          to={'/favoritegenres'}
-          className="flex justify-between text-sm dark:text-dark"
-        >
-          Favorites Genres
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6 stroke-white-dimmed dark:stroke-dark"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </Link>
         <a className="flex justify-between text-sm   dark:text-dark" href="">
           Toggle Dark/Light
           <input

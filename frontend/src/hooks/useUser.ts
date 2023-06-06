@@ -102,7 +102,7 @@ type EditProfileResponse = { token: string };
 
 async function editProfile(user: User) {
   const { data } = await axios.patch<EditProfileResponse>(
-    `${import.meta.env.VITE_SERVER_URL}/api/1.0/user/editprofile`,
+    `${import.meta.env.VITE_SERVER_URL}api/1.0/user/editprofile`,
     user,
     { withCredentials: true }
   );
@@ -119,7 +119,7 @@ export function useEditProfileMutation() {
 
 const getSingleUser = async () => {
   const { data } = await axios.get<User>(
-    `${import.meta.env.VITE_SERVER_URL}/api/1.0/user`,
+    `${import.meta.env.VITE_SERVER_URL}api/1.0/user`,
     { withCredentials: true }
   );
 
